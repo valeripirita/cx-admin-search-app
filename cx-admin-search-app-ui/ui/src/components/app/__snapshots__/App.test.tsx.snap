@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App should render 1`] = `
+<DocumentFragment>
+  <div
+    class="bg-red-500"
+  >
+    <h1
+      class="font-bold font-mono text-white"
+    >
+      Search app
+    </h1>
+  </div>
+</DocumentFragment>
+`;
