@@ -4,6 +4,6 @@ COPY ./cx-admin-search-app-service/service/ ./
 RUN mvn clean package -DskipTests
 
 FROM openjdk:16-jdk-alpine3.13 as production
-COPY --from=builder /app/src/target/cx-admin-search-bff-1.0.0.jar ./cx-admin-search-bff-1.0.0.jar
+COPY --from=builder /app/src/target/cx-admin-search-bff-1.0.0.jar /cx-admin-search-bff.jar
 EXPOSE 8081
-CMD ["java", "/app/src/cx-admin-search-bff-1.0.0.jar"]
+CMD ["java", "-jar", "cx-admin-search-bff.jar"]

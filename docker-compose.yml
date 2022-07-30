@@ -1,16 +1,18 @@
 version: "3.8"
 
 services:
-#  search-app-ui:
-#    container_name: cx-admin-search-app-ui
-#    image: cx-admin-search-app-ui
-#    build:
-#      context: .
-#      dockerfile: Dockerfile-ui
-#      target: production
-#    ports:
-#      - "8083:8083"
+  search-app-ui:
+    container_name: cx-admin-search-app-ui
+    image: cx-admin-search-app-ui
+    build:
+      context: .
+      dockerfile: Dockerfile-ui
+      target: production
+    ports:
+      - "8083:8083"
   search-app-bff:
+    depends_on:
+      - search-app-ui
     container_name: cx-admin-search-app-bff
     image: cx-admin-search-app-bff
     build:
@@ -18,4 +20,4 @@ services:
       dockerfile: Dockerfile-bff
       target: production
     ports:
-      - "8081:8081"
+      - "8084:8080"
