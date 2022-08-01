@@ -7,11 +7,12 @@ const deps = require('./package.json').dependencies;
 
 module.exports = () => {
     return {
-        entry: './src/index.ts',
+        entry: './src/index.tsx',
         mode: process.env.NODE_ENV || 'development',
         devServer: {
+            static: './dist',
+            hot: true,
             port: 9001,
-            open: true,
             historyApiFallback: true,
             headers: {
                 'Access-Control-Allow-Origin': '*'

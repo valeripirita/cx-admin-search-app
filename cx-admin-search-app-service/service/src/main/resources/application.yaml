@@ -1,0 +1,35 @@
+server:
+  jetty:
+    threads:
+      idle-timeout: 1000
+      max: 20
+      min: 10
+  port: 8080
+  servlet:
+    contextPath: /
+
+management:
+  endpoint:
+    health:
+      group:
+        readiness:
+          include: ping
+        liveness:
+          include: ping
+  endpoints:
+    web:
+      exposure:
+        include: health
+      base-path: /
+  server:
+    port: 8081
+
+logging:
+  file.name: ./cx-admin-search-app-service/service/log/app.log
+  level:
+    web: INFO
+
+#FIXME
+any-service:
+  host: https://jsonplaceholder.typicode.com
+  path: /posts

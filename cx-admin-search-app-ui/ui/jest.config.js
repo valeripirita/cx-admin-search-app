@@ -2,8 +2,7 @@ module.exports = {
     verbose: false,
     collectCoverageFrom: [ 'src/**/*.{ts,tsx}' ],
     modulePathIgnorePatterns: [
-        'src/index.ts',
-        'src/bootstrap.tsx'
+        'src/index.tsx'
     ],
     testEnvironmentOptions: {
         url: 'http://localhost'
