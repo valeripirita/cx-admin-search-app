@@ -2,9 +2,9 @@
 
 #### Available endpoints:
 
-1. `GET` `/members` - get all members for query
+1. `POST` `/account-api/v2/accounts/search` - get all accounts
 
-returns array members
+returns array accounts
 
 ### How to run locally
 
