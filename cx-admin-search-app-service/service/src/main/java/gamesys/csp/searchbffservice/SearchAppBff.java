@@ -1,4 +1,4 @@
-package gamesys.csp.anybffservice;
+package gamesys.csp.searchbffservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

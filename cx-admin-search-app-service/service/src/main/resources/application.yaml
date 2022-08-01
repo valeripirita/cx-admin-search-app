@@ -29,7 +29,6 @@ logging:
   level:
     web: INFO
 
-#FIXME
-any-service:
-  host: https://jsonplaceholder.typicode.com
-  path: /posts
+account-service:
+  host: ${ACCOUNT_SERVICE_HOST:http://localhost:8082}
+  path: /account-api/v2/accounts
