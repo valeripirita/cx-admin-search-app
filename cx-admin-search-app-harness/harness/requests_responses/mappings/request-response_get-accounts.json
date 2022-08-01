@@ -1,0 +1,19 @@
+{
+  "priority": 1,
+  "request": {
+    "method": "POST",
+    "urlPattern": "/account-api/v2/accounts/search",
+    "bodyPatterns" : [ {
+      "matches": ".*"
+    }]
+  },
+  "response": {
+    "status": 200,
+    "fixedDelayMilliseconds": 100,
+    "bodyFileName": "responses/response_get-accounts.json",
+    "transformers": ["response-template"],
+    "headers": {
+      "Content-Type": "application/json;charset=utf-8"
+    }
+  }
+}

@@ -21,3 +21,11 @@ services:
       target: production
     ports:
       - "8084:8080"
+  search-app-harness:
+    container_name: cx-admin-search-app-harness
+    image: cx-admin-search-app-harness
+    build:
+      context: .
+      dockerfile: Dockerfile-harness
+    ports:
+      - "8082:8080"
