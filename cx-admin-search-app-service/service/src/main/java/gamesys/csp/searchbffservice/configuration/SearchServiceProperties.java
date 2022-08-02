@@ -12,6 +12,8 @@ public class SearchServiceProperties {
 
     private String path;
 
+    private String apiKey;
+
     public String getAccountServiceUrl() {
         return host + path;
     }

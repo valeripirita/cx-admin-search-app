@@ -32,6 +32,7 @@ public class SearchController {
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
+        headers.set("Api-Key", properties.getApiKey());
 
         String url = properties.getAccountServiceUrl();
         HttpEntity requestEntity = new HttpEntity(null, headers);

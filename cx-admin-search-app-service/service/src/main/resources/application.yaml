@@ -30,5 +30,6 @@ logging:
     web: INFO
 
 account-service:
-  host: ${ACCOUNT_SERVICE_HOST:http://localhost:8082}
+  host: ${ACCOUNT_SERVICE_HOST:http://account-services.private.be.int05.integration.pgt.gaia}
   path: /account-api/v2/accounts
+  api-key: ${ACCOUNT_SERVICE_API_KEY:api-key}
