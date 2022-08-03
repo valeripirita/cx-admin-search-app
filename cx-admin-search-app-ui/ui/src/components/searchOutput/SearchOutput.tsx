@@ -13,28 +13,28 @@ const data = [
 const SearchOutput = () => {
 
     return (
-        <table className={'w-full border border-neutral-300'}>
+        <table className="w-full border border-neutral-300 shadow">
             <thead>
-                <tr className={'bg-neutral-200 text-left'}>
+                <tr className="bg-neutral-200 text-left">
                     {tableHeadCells.map((cell, index) => {
                         return (
-                            <th key={index} className={'px-2.5 py-3'}>{cell}</th>
+                            <th key={index} className="px-2.5 py-3">{cell}</th>
                         )
                     })}
                 </tr>
             </thead>
-            <tbody>
+            <tbody className="bg-white">
                 {data.map((val, key) => {
                     return (
                         <tr key={key}>
                             {/*FIXME: check how to refactor this to make less repetitive*/}
-                            <td className={'px-2.5 py-3'}>{val.accountId}</td>
-                            <td className={'px-2.5 py-3'}>{val.venture}</td>
-                            <td className={'px-2.5 py-3'}>{val.emailAddress}</td>
-                            <td className={'px-2.5 py-3'}>{val.dateOfBirth}</td>
-                            <td className={'px-2.5 py-3'}>{val.postCode}</td>
-                            <td className={'px-2.5 py-3'}>{val.mobilePhone}</td>
-                            <td className={'px-2.5 py-3'}>{'TODO'}</td>
+                            <td className="px-2.5 py-3">{val.accountId}</td>
+                            <td className="px-2.5 py-3">{val.venture}</td>
+                            <td className="px-2.5 py-3">{val.emailAddress}</td>
+                            <td className="px-2.5 py-3">{val.dateOfBirth}</td>
+                            <td className="px-2.5 py-3">{val.postCode}</td>
+                            <td className="px-2.5 py-3">{val.mobilePhone}</td>
+                            <td className="px-2.5 py-3">TODO</td>
                         </tr>
                     )
                 })}

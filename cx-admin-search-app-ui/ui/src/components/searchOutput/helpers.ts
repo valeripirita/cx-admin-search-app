@@ -1,5 +1,3 @@
-import React from 'react';
-
 export const tableHeadCells = [
     'Id / Created Date / Name / Gender',
     'Venture / Status',
