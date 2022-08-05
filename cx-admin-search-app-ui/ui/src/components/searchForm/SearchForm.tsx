@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { ChangeEvent, SyntheticEvent, useCallback, useRef, useState } from 'react';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { set } from '../../store/slices/searchFormSlice';
 
 // TODO:
 // when form submit happens lock ui
@@ -6,10 +8,26 @@ import React from 'react';
 // button hover
 // input hover
 
-const SearchForm = () => {
-    const handleSubmit = (e: React.SyntheticEvent) => {
-        e.preventDefault();
-        alert('You have submitted the form.')
+type SearchFormProps = {
+    onSubmit: () => void;
+}
+
+const SearchForm = ({ onSubmit }: SearchFormProps) => {
+
+    const dispatch = useAppDispatch();
+
+    const formData = useAppSelector(state => state.searchFormReducer);
+
+    const [formState, setFormState] = useState(formData);
+
+    const handleSubmit = useCallback((event: SyntheticEvent) => {
+        event.preventDefault();
+        dispatch(set(formState));
+        onSubmit();
+    }, [formState])
+
+    const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+        setFormState({...formState, [event.target.name]: event.target.value})
     }
 
     return (
@@ -67,19 +85,19 @@ const SearchForm = () => {
                 <hr className="border-t-neutral-300 mt-3.5" />
                 <label className="-mt-3.5 cursor-pointer">
                     <p className="inline-block text-stone-600 bg-stone-100 p-1 translate-x-3.5 translate-y-3.5">Screen name</p>
-                    <input className="bg-stone-100 block py-2.5 px-3 border border-neutral-400 rounded-lg" name='screenName' />
+                    <input onChange={handleChange} className="bg-stone-100 block py-2.5 px-3 border border-neutral-400 rounded-lg" name='screenName' />
                 </label>
                 <label className="-mt-3.5 cursor-pointer">
                     <p className="inline-block text-stone-600 bg-stone-100 p-1 translate-x-3.5 translate-y-3.5">Last name</p>
-                    <input className="bg-stone-100 block py-2.5 px-3 border border-neutral-400 rounded-lg" name='lastName' />
+                    <input onChange={handleChange} className="bg-stone-100 block py-2.5 px-3 border border-neutral-400 rounded-lg" name='lastName' />
                 </label>
                 <label className="-mt-3.5 cursor-pointer">
                     <p className="inline-block text-stone-600 bg-stone-100 p-1 translate-x-3.5 translate-y-3.5">First name</p>
-                    <input className="bg-stone-100 block py-2.5 px-3 border border-neutral-400 rounded-lg" name='firstName' />
+                    <input onChange={handleChange} className="bg-stone-100 block py-2.5 px-3 border border-neutral-400 rounded-lg" name='firstName' />
                 </label>
                 <label className="-mt-3.5 cursor-pointer">
                     <p className="inline-block text-stone-600 bg-stone-100 p-1 translate-x-3.5 translate-y-3.5">DOB</p>
-                    <input className="bg-stone-100 block py-2.5 px-3 border border-neutral-400 rounded-lg" name='dateOfBirth' />
+                    <input onChange={handleChange} className="bg-stone-100 block py-2.5 px-3 border border-neutral-400 rounded-lg" name='dateOfBirth' />
                 </label>
             </fieldset>
             <button className="uppercase bg-primary-500 text-white w-full p-3.5 rounded-lg" type='submit'>Search</button>
