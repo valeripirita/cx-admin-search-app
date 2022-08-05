@@ -19,13 +19,9 @@ const SearchResults = ({ searchForm }: SearchResultsProps) => {
 
     const { data: accounts, isLoading } = useFetchAllAccountsQuery(searchForm);
 
-    useEffect(() => {
-        console.log(accounts)
-    }, [accounts])
-
     return (
         <div>
-            { isLoading && <div>Loading...</div> }
+            { isLoading ? <div>Loading...</div> :
             <table className="w-full border border-neutral-300 shadow">
                 <thead>
                 <tr className="bg-neutral-200 text-left">
@@ -37,22 +33,22 @@ const SearchResults = ({ searchForm }: SearchResultsProps) => {
                 </tr>
                 </thead>
                 <tbody className="bg-white">
-                {data.map((val, key) => {
+                {accounts?._embedded.accounts.map((account, key) => {
                     return (
                         <tr key={key}>
                             {/*FIXME: check how to refactor this to make less repetitive*/}
-                            <td className="px-2.5 py-3">{val.accountId}</td>
-                            <td className="px-2.5 py-3">{val.venture}</td>
-                            <td className="px-2.5 py-3">{val.emailAddress}</td>
-                            <td className="px-2.5 py-3">{val.dateOfBirth}</td>
-                            <td className="px-2.5 py-3">{val.postCode}</td>
-                            <td className="px-2.5 py-3">{val.mobilePhone}</td>
+                            <td className="px-2.5 py-3">{account.accountId}</td>
+                            <td className="px-2.5 py-3">{account.venture}</td>
+                            <td className="px-2.5 py-3">{account.emailAddress}</td>
+                            <td className="px-2.5 py-3">{account.personalDetails.dateOfBirth}</td>
+                            <td className="px-2.5 py-3">{account._embedded?.residentialAddress[0]?.postCode}</td>
+                            <td className="px-2.5 py-3">{account._embedded?.contactNumbers[0].mobile.number}</td>
                             <td className="px-2.5 py-3">TODO</td>
                         </tr>
                     )
                 })}
                 </tbody>
-            </table>
+            </table> }
         </div>
     );
 };

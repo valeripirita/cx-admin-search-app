@@ -85,7 +85,7 @@ const SearchForm = ({ onSubmit }: SearchFormProps) => {
                 <hr className="border-t-neutral-300 mt-3.5" />
                 <label className="-mt-3.5 cursor-pointer">
                     <p className="inline-block text-stone-600 bg-stone-100 p-1 translate-x-3.5 translate-y-3.5">Screen name</p>
-                    <input onChange={handleChange} className="bg-stone-100 block py-2.5 px-3 border border-neutral-400 rounded-lg" name='screenName' />
+                    <input onChange={handleChange} defaultValue={formState.screenName} className="bg-stone-100 block py-2.5 px-3 border border-neutral-400 rounded-lg" name='screenName' />
                 </label>
                 <label className="-mt-3.5 cursor-pointer">
                     <p className="inline-block text-stone-600 bg-stone-100 p-1 translate-x-3.5 translate-y-3.5">Last name</p>
