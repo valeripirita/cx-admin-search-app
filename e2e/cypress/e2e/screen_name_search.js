@@ -10,5 +10,8 @@ When('I enter the screen name JOHN123 and click on the search', () => {
 });
 
 Then('the search result displays id 123, name JOHN, screen name JOHN123 and venture BBNJ', () => {
-    cy.get('[data-test="search-result-table"] > tr').eq(0).contains("123").contains("BBNJ")
+    cy.get('[data-test="search-result-table"] > tr').eq(0).contains("123");
+    cy.get('[data-test="search-result-table"] > tr').eq(0).contains("BBNJ");
+    cy.get('[data-test="search-result-table"] > tr').eq(0).contains("JOHN");
+    cy.get('[data-test="search-result-table"] > tr').eq(0).contains("JOHN123");
 });
