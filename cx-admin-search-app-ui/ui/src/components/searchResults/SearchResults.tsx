@@ -26,7 +26,7 @@ const SearchResults = ({ searchForm }: SearchResultsProps) => {
                     })}
                 </tr>
                 </thead>
-                <tbody className="bg-white">
+                <tbody data-test='search-result-table' className="bg-white">
                 {accounts?._embedded.accounts.map((account, key) => {
                     return (
                         <tr key={key}>

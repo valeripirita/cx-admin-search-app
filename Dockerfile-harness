@@ -5,7 +5,7 @@ WORKDIR /app/harness
 ADD cx-admin-search-app-harness/harness/lib/wiremock-standalone-2.23.2.jar /app/harness/wiremock.jar
 ADD cx-admin-search-app-harness/harness/requests_responses/mappings /app/harness/mappings
 ADD cx-admin-search-app-harness/harness/requests_responses/responses /app/harness/__files/responses
-EXPOSE 8080
+EXPOSE 8082
 RUN chown -R member:member /app/harness/
 USER 1010
 CMD ["java", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseCGroupMemoryLimitForHeap", "-XX:MaxRAMFraction=2", "-cp", "wiremock.jar", "com.github.tomakehurst.wiremock.standalone.WireMockServerRunner", "--no-request-journal", "--local-response-templating", "--disable-banner", "true"]

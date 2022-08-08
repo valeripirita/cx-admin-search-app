@@ -19,6 +19,115 @@
   "_embedded": {
     "accounts": [
       {
+        "accountId": 123,
+        "acquisitionPartnerId": 5,
+        "currencyIso": "GBP",
+        "emailAddress": "testuserkafka@test.com",
+        "emailVerificationStatus": "PENDING",
+        "open": false,
+        "personalDetails": {
+          "dateOfBirth": "1976-02-02",
+          "title": "mrs",
+          "firstName": "JOHN",
+          "surname": "zed"
+        },
+        "screenName": "JOHN123",
+        "venture": "BBNJ",
+        "_embedded": {
+          "contactNumbers": [
+            {
+              "_links": {
+                "self": {
+                  "href": "/account-api/v2/accounts/search/13263546/contact-numbers"
+                }
+              },
+              "home": {
+                "number": null,
+                "verifiedStatus": "UNASSESSED"
+              },
+              "mobile": {
+                "number": "01234567890",
+                "verifiedStatus": "UNASSESSED"
+              },
+              "work": {
+                "number": null,
+                "verifiedStatus": "UNASSESSED"
+              }
+            }
+          ],
+          "residentialAddress": [
+            {
+              "_links": {
+                "self": {
+                  "href": "/account-api/v2/accounts/search/13263546/residential-address"
+                }
+              },
+              "addressLine1": "Swan Gardens23",
+              "addressLine2": "10 Piccadilly",
+              "addressLine3": "London",
+              "addressLine4": "ANGUS",
+              "countryCode": "GBR",
+              "postCode": "W1J0DD"
+            }
+          ],
+          "subscriptionPreferences": [
+            {
+              "_links": {
+                "self": {
+                  "href": "/account-api/v2/accounts/search/13263546/subscription-preferences"
+                }
+              },
+              "subscriptionPreferences": [
+                {
+                  "type": "RECEIVE_GIFT",
+                  "status": "SUBSCRIBED"
+                },
+                {
+                  "type": "RECEIVE_CALL",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "SMS",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "DO_NOT_SHARE_DATA_WITH_PARTNER",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "THIRD_PARTY_SMS",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "ATTEND_EVENT",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "POST",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "EMAIL",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "THIRD_PARTY_EMAIL",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "SHARE_DATA_WITH_PARTNER",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "THIRD_PARTY_POST",
+                  "status": "UNSUBSCRIBED"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
         "accountId": 13263546,
         "acquisitionPartnerId": 5,
         "currencyIso": "GBP",
