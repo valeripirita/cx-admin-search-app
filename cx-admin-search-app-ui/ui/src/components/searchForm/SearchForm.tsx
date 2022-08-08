@@ -1,6 +1,6 @@
 import React, { ChangeEvent, SyntheticEvent, useCallback, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { set } from '../../store/slices/searchFormSlice';
+import { clear, set } from '../../store/slices/searchFormSlice';
 import FormInput from '../formInput/FormInput';
 import JurisdictionSelect from '../jurisdictionSelect/JurisdictionSelect';
 
@@ -22,6 +22,7 @@ const SearchForm = () => {
 
     const handleSubmit = useCallback((event: SyntheticEvent) => {
         event.preventDefault();
+        dispatch(clear());
         dispatch(set(formState));
     }, [formState])
 

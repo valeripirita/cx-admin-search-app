@@ -2,6 +2,7 @@ import React  from 'react';
 import { useFetchAllAccountsQuery } from '../../store/apis/accountServiceApi';
 import { tableHeadCells } from '../searchOutput/helpers';
 import { BarLoader } from 'react-spinners';
+import AccountStatus from '../accountStatus/AccountStatus';
 
 type SearchResultsProps = {
     searchForm: any;
@@ -30,19 +31,24 @@ const SearchResults = ({ searchForm }: SearchResultsProps) => {
                 <tbody data-test='search-result-table' className="bg-white">
                 {accounts?._embedded.accounts.map((account, key) => {
                     return (
-                        <tr key={key}>
+                        <tr key={key} className="border-b border-neutral-400">
                             {/*FIXME: check how to refactor this to make less repetitive*/}
                             <td className="px-2.5 py-3">
                                 <div className="flex flex-col">
-                                    <div>{account.accountId}</div>
-                                    <div className="flex gap-0.5">
-                                        <span>{account.personalDetails.title}</span>
-                                        <span className="font-semibold">{account.personalDetails.firstName}</span>
-                                        <span className="font-semibold">{account.personalDetails.surname}</span>
+                                    <div className="font-light text-sm"><span className="text-neutral-500">ID: </span> {account.accountId}</div>
+                                    <div className="flex gap-1 text-sm">
+                                        <span className="text-neutral-600 capitalize">{account.personalDetails.title}</span>
+                                        <span className="font-semibold capitalize">{account.personalDetails.firstName}</span>
+                                        <span className="font-semibold capitalize">{account.personalDetails.surname}</span>
                                     </div>
                                 </div>
                             </td>
-                            <td className="px-2.5 py-3">{account.venture}</td>
+                            <td className="px-2.5 py-3">
+                                <div className='flex gap-1 items-center'>
+                                    <span>{account.venture}</span>
+                                    <AccountStatus status={account.open} />
+                                </div>
+                            </td>
                             <td className="px-2.5 py-3">{account.emailAddress}</td>
                             <td className="px-2.5 py-3">{account.personalDetails.dateOfBirth}</td>
                             <td className="px-2.5 py-3">{account._embedded?.residentialAddress[0]?.postCode}</td>
