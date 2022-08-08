@@ -3,7 +3,6 @@ import { useAppSelector } from '../../store/hooks';
 import SearchResults from '../searchResults/SearchResults';
 
 const SearchOutput = () => {
-
     const form = useAppSelector(state => state.searchFormReducer);
 
     if (Object.keys(form).length === 0 || Object.values(form).every(item => !item)) {

@@ -1,6 +1,8 @@
 import React, { ChangeEvent, SyntheticEvent, useCallback, useRef, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { set } from '../../store/slices/searchFormSlice';
+import FormInput from '../formInput/FormInput';
+import JurisdictionSelect from '../jurisdictionSelect/JurisdictionSelect';
 
 // TODO:
 // when form submit happens lock ui
@@ -8,11 +10,9 @@ import { set } from '../../store/slices/searchFormSlice';
 // button hover
 // input hover
 
-type SearchFormProps = {
-    onSubmit: () => void;
-}
+// error handling
 
-const SearchForm = ({ onSubmit }: SearchFormProps) => {
+const SearchForm = () => {
 
     const dispatch = useAppDispatch();
 
@@ -23,7 +23,6 @@ const SearchForm = ({ onSubmit }: SearchFormProps) => {
     const handleSubmit = useCallback((event: SyntheticEvent) => {
         event.preventDefault();
         dispatch(set(formState));
-        onSubmit();
     }, [formState])
 
     const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -34,37 +33,46 @@ const SearchForm = ({ onSubmit }: SearchFormProps) => {
         <form className="text-sm" onSubmit={handleSubmit}>
             {/*TODO: check input types*/}
             <fieldset className="mb-4 w-full">
-                <label className="-mt-3.5 cursor-pointer">
-                    <p className="inline-block text-stone-600 bg-stone-100 p-1 translate-x-3.5 translate-y-3.5">Jurisdiction</p>
-                    {/*FIXME: select arrow is too close to edge*/}
-                    <select name='jurisdiction' className="bg-stone-100 block py-2.5 px-3 border border-neutral-400 rounded-lg w-full">
-                        {/*FIXME: get jurisdiction names from somewhere or at least move them to a list*/}
-                        <option value='EU'>Europe</option>
-                        <option value='NJ'>New Jersey</option>
-                        <option value='NY'>New York</option>
-                        <option value='AZ'>Arizona</option>
-                        <option value='ON'>Ontario</option>
-                    </select>
-                </label>
+                <JurisdictionSelect
+                    model={formState.jurisdiction}
+                    onChange={handleChange}
+                    classNames='-mt-3.5'
+                />
             </fieldset>
             <fieldset className="mb-4 w-full">
                 <hr className="border-t-neutral-300 mt-3.5" />
-                <label className="-mt-3.5 cursor-pointer">
-                    <p className="inline-block text-stone-600 bg-stone-100 p-1 translate-x-3.5 translate-y-3.5">Member ID</p>
-                    <input className="bg-stone-100 block py-2.5 px-3 border border-neutral-400 rounded-lg w-full" name='memberId' />
-                </label>
-                <label className="-mt-3.5 cursor-pointer">
-                    <p className="inline-block text-stone-600 bg-stone-100 p-1 translate-x-3.5 translate-y-3.5">Email</p>
-                    <input className="bg-stone-100 block py-2.5 px-3 border border-neutral-400 rounded-lg w-full" name='email' />
-                </label>
-                <label className="-mt-3.5 cursor-pointer">
-                    <p className="inline-block text-stone-600 bg-stone-100 p-1 translate-x-3.5 translate-y-3.5">Postcode</p>
-                    <input className="bg-stone-100 block py-2.5 px-3 border border-neutral-400 rounded-lg w-full" name='postcode' />
-                </label>
-                <label className="-mt-3.5 cursor-pointer">
-                    <p className="inline-block text-stone-600 bg-stone-100 p-1 translate-x-3.5 translate-y-3.5">Phone</p>
-                    <input className="bg-stone-100 block py-2.5 px-3 border border-neutral-400 rounded-lg w-full" name='phone' />
-                </label>
+                <FormInput
+                    name="accountId"
+                    model={formState.accountId}
+                    classNames="-mt-3.5"
+                    title="Member ID"
+                    onChange={handleChange}
+                    disabled={true}
+                />
+                <FormInput
+                    name="emailAddress"
+                    model={formState.emailAddress}
+                    classNames="-mt-3.5"
+                    title="Email"
+                    onChange={handleChange}
+                    disabled={true}
+                />
+                <FormInput
+                    name="postCode"
+                    model={formState.postCode}
+                    classNames="-mt-3.5"
+                    title="Postcode"
+                    onChange={handleChange}
+                    disabled={true}
+                />
+                <FormInput
+                    name="phone"
+                    model={formState.phone}
+                    classNames="-mt-3.5"
+                    title="Phone"
+                    onChange={handleChange}
+                    disabled={true}
+                />
             </fieldset>
             <fieldset className="mb-4 w-full">
                 <hr className="border-t-neutral-300 mt-3.5" />
@@ -83,22 +91,37 @@ const SearchForm = ({ onSubmit }: SearchFormProps) => {
             </fieldset>
             <fieldset className="mb-4">
                 <hr className="border-t-neutral-300 mt-3.5" />
-                <label className="-mt-3.5 cursor-pointer">
-                    <p className="inline-block text-stone-600 bg-stone-100 p-1 translate-x-3.5 translate-y-3.5">Screen name</p>
-                    <input onChange={handleChange} defaultValue={formState.screenName} className="bg-stone-100 block py-2.5 px-3 border border-neutral-400 rounded-lg" name='screenName' />
-                </label>
-                <label className="-mt-3.5 cursor-pointer">
-                    <p className="inline-block text-stone-600 bg-stone-100 p-1 translate-x-3.5 translate-y-3.5">Last name</p>
-                    <input onChange={handleChange} className="bg-stone-100 block py-2.5 px-3 border border-neutral-400 rounded-lg" name='lastName' />
-                </label>
-                <label className="-mt-3.5 cursor-pointer">
-                    <p className="inline-block text-stone-600 bg-stone-100 p-1 translate-x-3.5 translate-y-3.5">First name</p>
-                    <input onChange={handleChange} className="bg-stone-100 block py-2.5 px-3 border border-neutral-400 rounded-lg" name='firstName' />
-                </label>
-                <label className="-mt-3.5 cursor-pointer">
-                    <p className="inline-block text-stone-600 bg-stone-100 p-1 translate-x-3.5 translate-y-3.5">DOB</p>
-                    <input onChange={handleChange} className="bg-stone-100 block py-2.5 px-3 border border-neutral-400 rounded-lg" name='dateOfBirth' />
-                </label>
+                <FormInput
+                    name="screenName"
+                    model={formState.screenName}
+                    classNames="-mt-3.5"
+                    title="Screen name"
+                    onChange={handleChange}
+                />
+                <FormInput
+                    name="surname"
+                    model={formState.surname}
+                    classNames="-mt-3.5"
+                    title="Last name"
+                    onChange={handleChange}
+                    disabled={true}
+                />
+                <FormInput
+                    name="firstName"
+                    model={formState.firstName}
+                    classNames="-mt-3.5"
+                    title="First name"
+                    onChange={handleChange}
+                    disabled={true}
+                />
+                <FormInput
+                    name="dateOfBirth"
+                    model={formState.dateOfBirth}
+                    classNames="-mt-3.5"
+                    title="DOB"
+                    onChange={handleChange}
+                    disabled={true}
+                />
             </fieldset>
             <button className="uppercase bg-primary-500 text-white w-full p-3.5 rounded-lg" type='submit'>Search</button>
         </form>

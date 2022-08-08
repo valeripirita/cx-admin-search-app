@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import SearchForm from '../searchForm/SearchForm';
 import SearchOutput from '../searchOutput/SearchOutput';
 import '../../../styles.css'
@@ -9,16 +9,14 @@ const store = setupStore();
 
 const App = () => {
 
-    const [showResult, setShowResult] = useState<boolean>(false);
-
     return (
         <Provider store={store}>
             <main className="bg-neutral-100 flex flex-row h-full w-full">
                 <section className="box-border w-[298px] shadow bg-stone-100 border-r border-r-neutral-300 px-4 h-full overflow-auto">
-                    <SearchForm onSubmit={() => setShowResult(true)} />
+                    <SearchForm />
                 </section>
                 <section className="flex-1 p-4 flex justify-center items-center">
-                    { showResult && <SearchOutput /> }
+                    <SearchOutput />
                 </section>
             </main>
         </Provider>

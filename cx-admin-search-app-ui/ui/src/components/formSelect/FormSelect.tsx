@@ -1,17 +1,17 @@
 import React, { ChangeEvent } from 'react';
 import cx from 'classnames';
 
-export type FormInputProps = {
+export type FormSelectProps = {
     name: string;
     model: string | number | undefined;
-    placeholder?: string;
+    options: { value: string | number | undefined, title: string }[];
     title?: string;
     classNames?: string;
-    onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
+    onChange?: (event: ChangeEvent<HTMLSelectElement>) => void;
     disabled?: boolean;
 }
 
-const FormInput = ({ name, model, placeholder, title, classNames, onChange, disabled }: FormInputProps) => {
+const FormSelect = ({classNames, disabled, model, name, onChange, options, title}: FormSelectProps) => {
     return (
         <label className={ cx(classNames, disabled ? 'cursor-not-allowed' : 'cursor-pointer') }>
             { title &&
@@ -23,21 +23,25 @@ const FormInput = ({ name, model, placeholder, title, classNames, onChange, disa
                 }>
                     { title }
                 </p> }
-            <input
+            {/*FIXME: select arrow is too close to edge*/}
+            <select
+                name={ name }
                 className={
                     cx(
-                'bg-stone-100 block py-2.5 px-3 border border-neutral-400 rounded-lg w-full',
-                      disabled ? 'cursor-not-allowed border-neutral-100' : 'cursor-pointer'
+                        'bg-stone-100 block py-2.5 px-3 border border-neutral-400 rounded-lg w-full',
+                        disabled ? 'cursor-not-allowed border-neutral-100' : 'cursor-pointer'
                     )
                 }
-                name={ name }
-                placeholder={ placeholder }
-                defaultValue={ model }
                 onChange={ onChange }
+                defaultValue={ model }
                 disabled={ disabled }
-            />
+            >
+                { options.map(option => (
+                    <option key={option.value} value={option.value}>{option.title}</option>
+                )) }
+            </select>
         </label>
     );
 };
 
-export default FormInput;
+export default FormSelect;
