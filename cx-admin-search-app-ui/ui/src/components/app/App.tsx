@@ -17,7 +17,7 @@ const App = () => {
                 <section className="box-border w-[298px] shadow bg-stone-100 border-r border-r-neutral-300 px-4 h-full overflow-auto">
                     <SearchForm onSubmit={() => setShowResult(true)} />
                 </section>
-                <section className="flex-1 p-4">
+                <section className="flex-1 p-4 flex justify-center items-center">
                     { showResult && <SearchOutput /> }
                 </section>
             </main>

@@ -1,6 +1,7 @@
 import React  from 'react';
 import { useFetchAllAccountsQuery } from '../../store/apis/accountServiceApi';
 import { tableHeadCells } from '../searchOutput/helpers';
+import { BarLoader } from 'react-spinners';
 
 type SearchResultsProps = {
     searchForm: any;
@@ -15,8 +16,8 @@ const SearchResults = ({ searchForm }: SearchResultsProps) => {
 
     return (
         <>
-            { isLoading ? <div>Loading...</div> :
-            <table className="w-full border border-neutral-300 shadow">
+            { isLoading ? <BarLoader /> :
+            <table className="w-full border border-neutral-300 shadow self-start">
                 <thead>
                 <tr className="bg-neutral-200 text-left">
                     {tableHeadCells.map((cell, index) => {

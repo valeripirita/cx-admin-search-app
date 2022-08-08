@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const { ModuleFederationPlugin } = webpack.container;
+const Dotenv = require('dotenv-webpack');
 const deps = require('./package.json').dependencies;
 
 module.exports = () => {
@@ -48,6 +49,7 @@ module.exports = () => {
             ]
         },
         plugins: [
+            new Dotenv(),
             new ModuleFederationPlugin({
                 name: 'cx_admin_search_app',
                 filename: 'remoteEntry.js',

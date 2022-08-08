@@ -77,18 +77,22 @@ export type AccountServiceResponse = {
     }
 }
 
+export type AccountServicePostObject = {
+    screenName?: string;
+}
+
 export const accountServiceApi = createApi({
     reducerPath: 'accountServiceApi',
     baseQuery: fetchBaseQuery({
-        baseUrl: 'http://localhost:8080'
+        baseUrl: process.env.ACCOUNT_SERVICE_HOST
     }),
     endpoints: (build) => ({
-        fetchAllAccounts: build.query<AccountServiceResponse, any>({
-            query: (object: any) => ({
+        fetchAllAccounts: build.query<AccountServiceResponse, AccountServicePostObject>({
+            query: (data) => ({
                 url: '/search',
                 method: 'POST',
                 body: {
-                    ...object
+                    ...data
                 }
             })
         })
