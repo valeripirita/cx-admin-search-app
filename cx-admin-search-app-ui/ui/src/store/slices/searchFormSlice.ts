@@ -1,7 +1,17 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export interface SearchFormSlice {
-    screenName?: string
+    jurisdiction?: string;
+    accountId?: number;
+    ventures?: string[];
+    screenName?: string;
+    emailAddress?: string;
+    firstName?: string;
+    surname?: string;
+    dateOfBirth?: string;
+    identityNumber?: string;
+    postCode?: string;
+    phone?: string;
 }
 
 const initialState: SearchFormSlice= {}
