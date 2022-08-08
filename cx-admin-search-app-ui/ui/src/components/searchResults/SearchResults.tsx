@@ -1,12 +1,6 @@
-import React, { useEffect } from 'react';
+import React  from 'react';
 import { useFetchAllAccountsQuery } from '../../store/apis/accountServiceApi';
 import { tableHeadCells } from '../searchOutput/helpers';
-
-const data = [
-    { accountId: '21009294', emailAddress: 'tmtpmtnxdaexi@example.com', dateOfBirth: '26/11/2005', firstName: 'Uismgiwvgbgr', surname: 'Tzltnuiuwgla', postCode: 'SA151EW - UK', mobilePhone: '071364585464', venture: 'JPJ'},
-    { accountId: '21009294', emailAddress: 'tmtpmtnxdaexi@example.com', dateOfBirth: '26/11/2005', firstName: 'Merlin', surname: 'Goodwin', postCode: 'SA151EW - UK', mobilePhone: '071364585464', venture: 'JPJ'},
-    { accountId: '21009294', emailAddress: 'tmtpmtnxdaexi@example.com', dateOfBirth: '26/11/2005', firstName: 'Josiah', surname: 'Dean', postCode: 'SA151EW - UK', mobilePhone: '071364585464', venture: 'JPJ'}
-]
 
 type SearchResultsProps = {
     searchForm: any;
@@ -20,7 +14,7 @@ const SearchResults = ({ searchForm }: SearchResultsProps) => {
     const { data: accounts, isLoading } = useFetchAllAccountsQuery(searchForm);
 
     return (
-        <div>
+        <>
             { isLoading ? <div>Loading...</div> :
             <table className="w-full border border-neutral-300 shadow">
                 <thead>
@@ -49,7 +43,7 @@ const SearchResults = ({ searchForm }: SearchResultsProps) => {
                 })}
                 </tbody>
             </table> }
-        </div>
+        </>
     );
 };
 
