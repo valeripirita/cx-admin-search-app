@@ -18,7 +18,7 @@ const FormInput = ({ name, model, placeholder, title, classNames, onChange, disa
             { title &&
                 <p className={
                     cx(
-                        'inline-block bg-stone-100 p-1 translate-x-3.5 translate-y-3.5',
+                        'inline-block bg-white p-1 translate-x-3.5 translate-y-3.5',
                         disabled ? 'text-neutral-100' : 'text-stone-600'
                     )
                 }>
@@ -27,7 +27,7 @@ const FormInput = ({ name, model, placeholder, title, classNames, onChange, disa
             <input
                 className={
                     cx(
-                'bg-stone-100 block py-2.5 px-3 border border-neutral-400 rounded-lg w-full',
+                'bg-white block py-2.5 px-3 border border-neutral-400 rounded-lg w-full',
                       disabled ? 'cursor-not-allowed border-neutral-100' : 'cursor-pointer'
                     )
                 }
