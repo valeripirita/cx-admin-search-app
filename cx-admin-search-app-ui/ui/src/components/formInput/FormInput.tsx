@@ -9,9 +9,10 @@ export type FormInputProps = {
     classNames?: string;
     onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
     disabled?: boolean;
+    dataTestAttribute?: string;
 }
 
-const FormInput = ({ name, model, placeholder, title, classNames, onChange, disabled }: FormInputProps) => {
+const FormInput = ({ name, model, placeholder, title, classNames, onChange, disabled, dataTestAttribute }: FormInputProps) => {
     return (
         <label className={ cx(classNames, disabled ? 'cursor-not-allowed' : 'cursor-pointer') }>
             { title &&
@@ -35,6 +36,7 @@ const FormInput = ({ name, model, placeholder, title, classNames, onChange, disa
                 defaultValue={ model }
                 onChange={ onChange }
                 disabled={ disabled }
+                data-test={ dataTestAttribute }
             />
         </label>
     );

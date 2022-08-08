@@ -96,7 +96,7 @@ const SearchForm = () => {
                     model={formState.screenName}
                     classNames="-mt-3.5"
                     title="Screen name"
-                    data-test='screen-name-input'
+                    dataTestAttribute='screen-name-input'
                     onChange={handleChange}
                 />
                 <FormInput
