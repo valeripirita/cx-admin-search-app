@@ -43,6 +43,7 @@ const SearchResults = ({ searchForm }: SearchResultsProps) => {
                                     </div>
                                 </div>
                             </td>
+                            <td className="px-2.5 py-3">{account.screenName}</td>
                             <td className="px-2.5 py-3">
                                 <div className='flex gap-1 items-center'>
                                     <span>{account.venture}</span>

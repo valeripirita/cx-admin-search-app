@@ -29,7 +29,6 @@ async function setupNodeEvents(
         })
     );
 
-    // Make sure to return the config object as it might have been modified by the plugin.
     return config;
 }
 
@@ -41,6 +40,7 @@ module.exports = defineConfig({
         video: false,
         chromeWebSecurity: false,
         watchForFileChanges: false,
+        screenshots: false,
         setupNodeEvents
     }
 });
