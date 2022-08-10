@@ -1,6 +1,7 @@
-FROM node:16-alpine
+FROM cypress/included:10.4.0
 WORKDIR /e2e
 COPY --chown=node:node e2e/package*.json ./
 COPY --chown=node:node e2e /e2e
-RUN npm install && npm cache clean --force && npm run test
+RUN npm install
 USER node
+CMD ["npm", "test"]
