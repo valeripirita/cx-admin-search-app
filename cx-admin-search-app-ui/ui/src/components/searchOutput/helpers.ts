@@ -1,10 +1,9 @@
 export const tableHeadCells = [
-    'Id / Created Date / Name / Gender',
-    'Screen Name',
-    'Venture / Status',
+    'Name / Gender / Screen Name / Created on',
     'Email',
     'DOB / Status',
     'Postcode / Status',
     'Phone',
+    'Venture / Status',
     'Linked Accounts'
 ];

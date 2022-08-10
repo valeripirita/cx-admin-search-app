@@ -12,7 +12,7 @@ const App = () => {
     return (
         <Provider store={store}>
             <main className="bg-neutral-100 flex flex-row h-full w-full">
-                <section className="box-border w-[298px] shadow bg-white border-r border-r-neutral-300 px-4 h-full overflow-auto">
+                <section className="box-border w-[298px] shadow bg-white border-2 border-primary-500 rounded-tr px-4 pb-4 h-full overflow-auto">
                     <SearchForm />
                 </section>
                 <section className="flex-1 p-4 flex justify-center items-center">

@@ -14,7 +14,7 @@ export interface SearchFormSlice {
     phone?: string;
 }
 
-const initialState: SearchFormSlice= {}
+const initialState: SearchFormSlice = {screenName: 'test1'}
 
 export const searchFormSlice = createSlice({
     name: 'searchForm',
