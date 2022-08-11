@@ -3,13 +3,13 @@ import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { clear, set } from '../../store/slices/searchFormSlice';
 import FormInput from '../formInput/FormInput';
 import JurisdictionSelect from '../jurisdictionSelect/JurisdictionSelect';
+import VentureSelect from '../ventureSelect/VentureSelect';
 
 // TODO:
 // when form submit happens lock ui
 // when form submit happens show loading
 // button hover
 // input hover
-
 // error handling
 
 const SearchForm = () => {
@@ -37,7 +37,7 @@ const SearchForm = () => {
                 <JurisdictionSelect
                     model={formState.jurisdiction}
                     onChange={handleChange}
-                    classNames='-mt-3.5'
+                    classNames="-mt-3.5"
                 />
             </fieldset>
             <fieldset className="mb-4 w-full">
@@ -77,18 +77,11 @@ const SearchForm = () => {
             </fieldset>
             <fieldset className="mb-4 w-full">
                 <hr className="border-t-neutral-300 mt-3.5" />
-                <label className="-mt-3.5 cursor-pointer">
-                    <p className="inline-block text-stone-600 bg-stone-100 p-1 translate-x-3.5 translate-y-3.5">Venture</p>
-                    {/*FIXME: select arrow is too close to edge*/}
-                    <select name='venture' className="bg-stone-100 block py-2.5 px-3 border border-neutral-400 rounded-lg w-full">
-                        {/*FIXME: get jurisdiction names from somewhere or at least move them to a list*/}
-                        <option value='1'>Venture 1</option>
-                        <option value='2'>Venture 2</option>
-                        <option value='3'>Venture 3</option>
-                        <option value='4'>Venture 4</option>
-                        <option value='5'>Venture 5</option>
-                    </select>
-                </label>
+                <VentureSelect
+                    classNames="-mt-3.5"
+                    model={formState.ventures}
+                    onChange={handleChange}
+                />
             </fieldset>
             <fieldset className="mb-4">
                 <hr className="border-t-neutral-300 mt-3.5" />

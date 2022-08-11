@@ -45,7 +45,7 @@ const SearchResults = ({ searchForm }: SearchResultsProps) => {
                     </div>
                 </div>
 
-                <div data-test='search-result-table' className="flex flex-col gap-2.5 h-full overflow-y-auto">
+                <div data-test='search-result-table' className="flex flex-col gap-2.5 h-full overflow-y-auto mb-2.5">
                     {accounts?._embedded.accounts.map((account, key) => (
                         <div key={account.accountId} className="relative flex flex-nowrap w-full rounded-md shadow">
                             <div className={
