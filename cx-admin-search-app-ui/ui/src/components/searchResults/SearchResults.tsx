@@ -4,6 +4,7 @@ import { tableHeadCells } from '../searchOutput/helpers';
 import { BarLoader } from 'react-spinners';
 import AccountStatus from '../accountStatus/AccountStatus';
 import cx from 'classnames';
+import Pagination from '../pagination/Pagination';
 
 type SearchResultsProps = {
     searchForm: any;
@@ -106,6 +107,9 @@ const SearchResults = ({ searchForm }: SearchResultsProps) => {
                         </div>
                     ))}
                 </div>
+
+                {/* Pagination */}
+                <Pagination currentPage={1} pageSize={10} pagesCount={20}/>
             </div> }
         </>
     );
