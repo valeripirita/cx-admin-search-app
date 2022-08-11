@@ -4,7 +4,6 @@ import { tableHeadCells } from '../searchOutput/helpers';
 import { BarLoader } from 'react-spinners';
 import AccountStatus from '../accountStatus/AccountStatus';
 import cx from 'classnames';
-import path from 'path';
 
 type SearchResultsProps = {
     searchForm: any;
@@ -16,6 +15,14 @@ type SearchResultsProps = {
 const SearchResults = ({ searchForm }: SearchResultsProps) => {
 
     const { data: accounts, isFetching } = useFetchAllAccountsQuery(searchForm);
+
+    const getVentureImage = (ventureName: string) => {
+        try {
+            return require(`/public/assets/ventures/${ventureName}.jpg`);
+        } catch (e) {
+            return null;
+        }
+    }
 
     if (accounts?.totalResults === 0) {
         // TODO: move to separate component
@@ -39,8 +46,8 @@ const SearchResults = ({ searchForm }: SearchResultsProps) => {
 
                 <div data-test='search-result-table' className="flex flex-col gap-2.5 h-full overflow-y-auto">
                     {accounts?._embedded.accounts.map((account, key) => (
-                        <div className="relative flex flex-nowrap w-full rounded-md shadow">
-                            <div key={account.accountId} className={
+                        <div key={account.accountId} className="relative flex flex-nowrap w-full rounded-md shadow">
+                            <div className={
                                 cx(
                                     'flex rounded-l-md py-2 pl-5 bg-white w-full',
                                     !account.open && 'border-2 border-error-100 border-r-0 opacity-30'
@@ -80,7 +87,7 @@ const SearchResults = ({ searchForm }: SearchResultsProps) => {
                                 <div className="flex gap-1 items-start pt-1 pr-2.5 basis-[12%] flex-grow-0 flex-shrink-0">
                                     <div>
                                         <img
-                                            src={ require(`/public/assets/ventures/${account.venture}.jpg`) }
+                                            src={getVentureImage(account.venture)}
                                             alt={account.venture}
                                             title={account.venture}
                                         />
