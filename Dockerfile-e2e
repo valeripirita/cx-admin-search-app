@@ -4,4 +4,4 @@ COPY --chown=node:node e2e/package*.json ./
 COPY --chown=node:node e2e /e2e
 RUN npm install
 USER node
-CMD ["npm", "test"]
+CMD ["cypress", "run", "--config-file", "cypress.headless.config.js"]

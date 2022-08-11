@@ -4,11 +4,8 @@
   "description": "BDD tests using preprocessor that behaves similar to Cucumber in Cypress",
   "main": "index.js",
   "scripts": {
-    "test": "cypress run --headless",
-    "test:open": "cypress open"
+    "test": "cypress open"
   },
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "@badeball/cypress-cucumber-preprocessor": "^12.0.0",
     "@cypress/webpack-preprocessor": "^5.12.0",
