@@ -20,6 +20,7 @@ module.exports = {
                 error: {
                     100: '#FFC4C2',
                     300: '#FDC8C6',
+                    400: '#E07973',
                     600: '#D72E5B'
                 },
                 success: {

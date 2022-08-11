@@ -4,8 +4,8 @@ import SearchOutput from '../searchOutput/SearchOutput';
 import '../../../styles.css'
 import { Provider } from 'react-redux';
 import { setupStore } from '../../store/store';
-
 const store = setupStore();
+
 
 const App = () => {
 

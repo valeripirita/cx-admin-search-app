@@ -24,82 +24,81 @@ const SearchResults = ({ searchForm }: SearchResultsProps) => {
     return (
         <>
             { isFetching ? <BarLoader /> :
-            <table className="w-full self-start border-separate border-spacing-y-[10px]">
-                <thead className="bg-primary-300">
-                    <tr className="text-left text-sm">
+            <div className="w-full flex flex-col self-start h-full">
+                <div className="w-full flex flex-col flex-nowrap rounded-md overflow-hidden flex-grow-0 flex-shrink-0 font-bold shadow-md mb-2.5">
+                    <div className="bg-white px-[30px] py-2 text-primary-500">{accounts?.totalResults} Results</div>
+                    <div className="flex flex-nowrap justify-start align-baseline bg-primary-300 px-5 text-sm">
                         {tableHeadCells.map((cell, index) => {
                             return (
-                                <th key={index} className="px-2.5 py-3">{cell}</th>
+                                <div key={index} style={{flexBasis: `${cell.width}%`}} className={cx("px-2.5 py-2 flex-grow-0 flex-shrink-0")}>{cell.title}</div>
                             )
                         })}
-                    </tr>
-                </thead>
-                <tbody data-test='search-result-table' className="bg-white">
-                {accounts?._embedded.accounts.map((account, key) => {
-                    return (
-                        <tr key={key} className='shadow-md'>
-                            {/*FIXME: check how to refactor this to make less repetitive*/}
-                            <td valign="top" className={cx(
-                                'px-2.5 py-3 rounded-l-md',
-                                !account.open && 'border-4 border-r-0 border-error-100'
-                            )}>
-                                <div className="flex flex-col">
-                                    <div className="flex gap-1">
-                                        <span className="text-neutral-500 font-light capitalize">{account.personalDetails.title}</span>
-                                        <span className="font-semibold capitalize">{account.personalDetails.firstName}</span>
-                                        <span className="font-semibold capitalize">{account.personalDetails.surname}</span>
-                                    </div>
-                                    <div className="text-sm font-light">{account.screenName} / 01/01/1001</div>
+                    </div>
+                </div>
+
+                <div data-test='search-result-table' className="flex flex-col gap-2.5 h-full overflow-y-auto">
+                    {accounts?._embedded.accounts.map((account, key) => (
+                        <div className="relative flex flex-nowrap w-full rounded-md shadow">
+                            <div key={account.accountId} className={
+                                cx(
+                                    'flex rounded-l-md py-2 pl-5 bg-white w-full',
+                                    !account.open && 'border-2 border-error-100 border-r-0 opacity-30'
+                                )
+                            }>
+                                {/* Name and created on */}
+                                <div className="flex flex-col px-2.5 basis-[25%] flex-grow-0 flex-shrink-0">
+                                      <div className="flex gap-1">
+                                            <span className="text-neutral-500 font-light capitalize">{account.personalDetails.title}</span>
+                                            <span className="font-semibold capitalize">{account.personalDetails.firstName}</span>
+                                            <span className="font-semibold capitalize">{account.personalDetails.surname}</span>
+                                      </div>
+                                      <div className="text-sm font-light">{account.screenName} / 01/01/1001</div>
                                 </div>
-                            </td>
-                            <td valign="top" className={cx(
-                                'px-2.5 py-3',
-                                !account.open && 'border-4 border-l-0 border-r-0 border-error-100'
-                            )}>
-                                <div className="flex flex-col font-light">
+                                {/* Email */}
+                                <div className="flex flex-col font-light pr-2.5 basis-[17%] flex-grow-0 flex-shrink-0">
                                     <div>{account.accountId}</div>
                                     <div className="text-sm font-light">{account.emailAddress}</div>
                                 </div>
-                            </td>
-                            <td valign="top"className={cx(
-                                'px-2.5 py-3',
-                                !account.open && 'border-4 border-l-0 border-r-0 border-error-100'
-                            )}>{account.personalDetails.dateOfBirth}</td>
-                            <td valign="top" className={cx(
-                                'px-2.5 py-3',
-                                !account.open && 'border-4 border-l-0 border-r-0 border-error-100'
-                            )}>
-                                <div className="d-flex flex-col">
-                                    <div className="font-light">{account._embedded?.residentialAddress[0]?.addressLine2}</div>
-                                    <div><span className="font-semibold">{account._embedded?.residentialAddress[0]?.postCode}</span><span className="font-light"> - {account._embedded?.residentialAddress[0]?.countryCode}</span></div>
+                                {/* DOB */}
+                                <div className="font-light pr-2.5 basis-[12%] flex-grow-0 flex-shrink-0">
+                                    {account.personalDetails.dateOfBirth}
                                 </div>
-                            </td>
-                            <td valign="top" className={cx(
-                                'px-2.5 py-3',
-                                !account.open && 'border-4 border-l-0 border-r-0 border-error-100'
-                            )}>{account._embedded?.contactNumbers[0].mobile.number}</td>
-                            <td valign="top" className={cx(
-                                'px-2.5 py-3',
-                                !account.open && 'border-4 border-l-0 border-r-0 border-error-100'
-                            )}>
-                                <div className="flex gap-1 items-center pt-0.5">
-                                    <div className={`venture venture-${account.venture}`}></div>
+                                {/* Address */}
+                                <div className="flex flex-col pr-2.5 basis-[12%] flex-grow-0 flex-shrink-0">
+                                    <div className="font-light">{account._embedded?.residentialAddress[0]?.addressLine2}</div>
+                                    <div>
+                                        <span className="font-semibold">{account._embedded?.residentialAddress[0]?.postCode}</span>
+                                        <span className="font-light"> - {account._embedded?.residentialAddress[0]?.countryCode}</span>
+                                    </div>
+                                </div>
+                                {/* Phone */}
+                                <div className="pr-2.5 basis-[11%] flex-grow-0 flex-shrink-0">
+                                    {account._embedded?.contactNumbers[0].mobile.number}
+                                </div>
+                                {/* Venture */}
+                                <div className="flex gap-1 items-start pt-1 pr-2.5 basis-[12%] flex-grow-0 flex-shrink-0">
+                                    <div>
+                                        <img
+                                            src={ require(`../../../public/assets/ventures/${account.venture}.jpg`) }
+                                            alt={account.venture}
+                                            title={account.venture}
+                                        />
+                                    </div>
                                     <AccountStatus status={account.open} />
                                 </div>
-                            </td>
-                            <td
-                                valign="top"
-                                className={cx(
-                                    'px-2.5 py-3 rounded-r-md relative overflow-hidden box-border',
-                                    'after:block after:absolute after:content("") after:h-full after:w-[10px] after:top-0 after:right-0',
-                                    account.open ? 'after:bg-success-500' : 'after:bg-red-500',
-                                    !account.open && 'border-4 border-l-0 border-error-100'
-                                )}>TODO</td>
-                        </tr>
-                    )
-                })}
-                </tbody>
-            </table> }
+                                {/*Linked Account*/}
+                                <div className="pr-2.5 basis-[11%] flex-grow-0 flex-shrink-0">TODO</div>
+                            </div>
+                            <div className={
+                                cx(
+                                    'w-2.5 h-full rounded-r-md basis-2.5 flex-grow-0 flex-shrink-0',
+                                    account.open ? 'bg-success-500' : 'bg-error-400'
+                                )}>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div> }
         </>
     );
 };
