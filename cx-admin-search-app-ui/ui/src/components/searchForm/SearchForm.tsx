@@ -33,11 +33,11 @@ const SearchForm = () => {
     return (
         <form data-test='search-form' className="text-sm" onSubmit={handleSubmit}>
             {/*TODO: check input types*/}
-            <fieldset className="mb-4 w-full">
+            <fieldset className="mb-2 w-full">
                 <JurisdictionSelect
                     model={formState.jurisdiction}
                     onChange={handleChange}
-                    classNames="-mt-3.5"
+                    classNames="-mt-4.5"
                 />
             </fieldset>
             <fieldset className="mb-4 w-full">
@@ -75,10 +75,10 @@ const SearchForm = () => {
                     disabled={true}
                 />
             </fieldset>
-            <fieldset className="mb-4 w-full">
-                <hr className="border-t-neutral-300 mt-3.5" />
+            <fieldset className="mb-2 w-full">
+                <hr className="border-t-neutral-300 mt-4.5" />
                 <VentureSelect
-                    classNames="-mt-3.5"
+                    classNames="-mt-4.5"
                     model={formState.ventures}
                     onChange={handleChange}
                 />
