@@ -4,6 +4,7 @@ import { tableHeadCells } from '../searchOutput/helpers';
 import { BarLoader } from 'react-spinners';
 import AccountStatus from '../accountStatus/AccountStatus';
 import cx from 'classnames';
+import path from 'path';
 
 type SearchResultsProps = {
     searchForm: any;
@@ -79,7 +80,7 @@ const SearchResults = ({ searchForm }: SearchResultsProps) => {
                                 <div className="flex gap-1 items-start pt-1 pr-2.5 basis-[12%] flex-grow-0 flex-shrink-0">
                                     <div>
                                         <img
-                                            src={ require(`../../../public/assets/ventures/${account.venture}.jpg`) }
+                                            src={ require(`/public/assets/ventures/${account.venture}.jpg`) }
                                             alt={account.venture}
                                             title={account.venture}
                                         />
