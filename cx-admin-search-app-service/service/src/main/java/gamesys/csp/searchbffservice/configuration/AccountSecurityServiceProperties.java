@@ -6,8 +6,8 @@ import org.springframework.context.annotation.Configuration;
 
 @Data
 @Configuration
-@ConfigurationProperties(prefix = "account-service")
-public class SearchServiceProperties {
+@ConfigurationProperties(prefix = "account-security-service")
+public class AccountSecurityServiceProperties {
     private String host;
     private String path;
 

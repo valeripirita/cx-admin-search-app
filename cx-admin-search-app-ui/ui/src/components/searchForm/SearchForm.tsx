@@ -5,6 +5,7 @@ import { clear, set } from '../../store/slices/searchFormSlice';
 import FormInput from '../formInput/FormInput';
 import JurisdictionSelect from '../jurisdictionSelect/JurisdictionSelect';
 import VentureSelect from '../ventureSelect/VentureSelect';
+import {useFetchAccountVenturesQuery} from '../../store/apis/accountServiceApi'
 
 // TODO:
 // when form submit happens lock ui
@@ -30,6 +31,12 @@ const SearchForm = () => {
     const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         setFormState({...formState, [event.target.name]: event.target.value})
     }
+
+    const {data, isLoading} = useFetchAccountVenturesQuery(892);
+
+    // useEffect(() => {
+    //     setFormState({...formState, ventureOptions: data?.ventures});
+    // });
 
     return (
         <form data-test='search-form' className="text-sm" onSubmit={handleSubmit}>

@@ -81,6 +81,17 @@ export type AccountServicePostObject = {
     screenName?: string;
 }
 
+export type Venture = {
+    id: number;
+    name: string;
+    obsolete: boolean;
+    partnerIds: number[];
+}
+
+export type AccountVenturesResponse = {
+    ventures: Venture[]
+}
+
 export const accountServiceApi = createApi({
     reducerPath: 'accountServiceApi',
     baseQuery: fetchBaseQuery({
@@ -95,10 +106,17 @@ export const accountServiceApi = createApi({
                     ...data
                 }
             })
+        }),
+        fetchAccountVentures: build.query<AccountVenturesResponse, any>({
+            query: (userId) => ({
+                url: `/ventures?userId=${userId}`,
+                method: 'GET',
+            })
         })
     })
 })
 
 export const {
-    useFetchAllAccountsQuery
+    useFetchAllAccountsQuery,
+    useFetchAccountVenturesQuery
 } = accountServiceApi;

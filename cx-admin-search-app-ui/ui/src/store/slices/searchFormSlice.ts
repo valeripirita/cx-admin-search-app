@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { Venture } from '../apis/accountServiceApi';
 
 export interface SearchFormSlice {
     jurisdiction?: string;
@@ -12,6 +13,7 @@ export interface SearchFormSlice {
     identityNumber?: string;
     postCode?: string;
     phone?: string;
+    ventureOptions?: Venture[];
 }
 
 const initialState: SearchFormSlice = {screenName: 'test1'}

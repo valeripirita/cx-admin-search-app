@@ -6,14 +6,14 @@ import org.springframework.context.annotation.Configuration;
 
 @Data
 @Configuration
-@ConfigurationProperties(prefix = "account-service")
-public class SearchServiceProperties {
+@ConfigurationProperties(prefix = "site-config-service")
+public class SiteConfigServiceProperties {
     private String host;
     private String path;
 
     private String apiKey;
 
-    public String getAccountServiceUrl() {
+    public String getSiteConfigServiceUrl() {
         return host + path;
     }
 }
