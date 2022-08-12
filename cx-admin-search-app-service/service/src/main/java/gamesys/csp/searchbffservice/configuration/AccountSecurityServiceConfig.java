@@ -1,7 +1,5 @@
 package gamesys.csp.searchbffservice.configuration;
 
-import gamesys.csp.searchbffservice.model.account.AccountResponse;
-import java.util.stream.Collectors;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
