@@ -1,5 +1,7 @@
 import React, { ChangeEvent } from 'react';
+
 import cx from 'classnames';
+
 import { ChevronDown } from '../icons/Icons';
 
 export type FormSelectProps = {

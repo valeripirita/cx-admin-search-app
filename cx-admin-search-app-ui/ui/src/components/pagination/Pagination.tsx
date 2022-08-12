@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { ChevronLeft, ChevronRight } from '../icons/Icons';
 
 export type PaginationProps = {

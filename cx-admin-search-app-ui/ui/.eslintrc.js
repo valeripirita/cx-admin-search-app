@@ -1,34 +1,45 @@
 module.exports = {
     extends: [
-        'eslint:recommended',
         'plugin:react/recommended',
         'plugin:@typescript-eslint/eslint-recommended',
         'plugin:@typescript-eslint/recommended',
-        'prettier'
     ],
-    parserOptions: {
-        ecmaVersion: 6,
-        sourceType: 'module'
-    },
     env: {
-        es6: true,
-        browser: true
+        browser: true,
     },
     rules: {
-        'no-multiple-empty-lines': ['warn', { max: 1 }],
-        indent: ['error', 4, { SwitchCase: 1 }],
-        'comma-dangle': ['error', 'never'],
-        'arrow-parens': [1, 'as-needed'],
         'react/prop-types': 0,
-        quotes: ['error', 'single']
+        quotes: ['error', 'single'],
+        'simple-import-sort/imports': [
+            'error',
+            {
+                groups: [
+                    // Side effect imports.
+                    ['^\\u0000'],
+                    // React imports
+                    ['^react'],
+                    // Packages.
+                    // Things that start with a letter (or digit or underscore).
+                    ['^\\w'],
+                    // Packages.
+                    // Things that start with a letter (or digit or underscore), or @ followed by a letter.
+                    ['^@?\\w'],
+                    // Absolute imports and other imports such as Vue-style @/foo.
+                    // Anything not matched in another group.
+                    ['^'],
+                    // Relative imports.
+                    // Anything that starts with a dot.
+                    ['^\\.'],
+                ],
+            },
+        ],
+        'simple-import-sort/exports': 'error',
     },
     settings: {
         react: {
-            version: 'detect'
-        }
+            version: 'detect',
+        },
     },
     parser: '@typescript-eslint/parser',
-    plugins: [
-        '@typescript-eslint'
-    ]
+    plugins: ['@typescript-eslint', 'simple-import-sort', 'import'],
 };

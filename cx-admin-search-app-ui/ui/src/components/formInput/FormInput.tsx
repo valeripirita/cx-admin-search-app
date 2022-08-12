@@ -1,4 +1,5 @@
 import React, { ChangeEvent } from 'react';
+
 import cx from 'classnames';
 
 export type FormInputProps = {
@@ -27,8 +28,8 @@ const FormInput = ({ name, model, placeholder, title, classNames, onChange, disa
             <input
                 className={
                     cx(
-                'bg-white block py-2.5 px-3 border border-neutral-400 rounded-lg w-full',
-                      disabled ? 'cursor-not-allowed border-neutral-100' : 'cursor-pointer'
+                        'bg-white block py-2.5 px-3 border border-neutral-400 rounded-lg w-full',
+                        disabled ? 'cursor-not-allowed border-neutral-100' : 'cursor-pointer'
                     )
                 }
                 name={ name }

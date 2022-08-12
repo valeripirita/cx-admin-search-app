@@ -1,4 +1,5 @@
 import React from 'react';
+
 import Badge, { BADGE_VARIANTS } from '../badge/Badge';
 
 export type AccountStatusProps = {

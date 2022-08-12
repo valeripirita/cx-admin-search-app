@@ -1,6 +1,7 @@
-import { configureStore, combineReducers } from '@reduxjs/toolkit';
-import searchFormReducer from './slices/searchFormSlice';
+import { combineReducers,configureStore } from '@reduxjs/toolkit';
+
 import { accountServiceApi } from './apis/accountServiceApi';
+import searchFormReducer from './slices/searchFormSlice';
 
 const rootReducer = combineReducers({
     searchFormReducer,
@@ -9,7 +10,7 @@ const rootReducer = combineReducers({
 
 export const setupStore = () => configureStore({
     reducer: rootReducer,
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware()
+    middleware: getDefaultMiddleware => getDefaultMiddleware()
         .concat(accountServiceApi.middleware)
 })
 

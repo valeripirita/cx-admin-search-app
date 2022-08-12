@@ -1,4 +1,5 @@
 import React, { ChangeEvent, SyntheticEvent, useCallback, useState } from 'react';
+
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { clear, set } from '../../store/slices/searchFormSlice';
 import FormInput from '../formInput/FormInput';

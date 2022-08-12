@@ -1,11 +1,12 @@
+import '../../../styles.css'
+
 import React from 'react';
+import { Provider } from 'react-redux';
+
+import { setupStore } from '../../store/store';
 import SearchForm from '../searchForm/SearchForm';
 import SearchOutput from '../searchOutput/SearchOutput';
-import '../../../styles.css'
-import { Provider } from 'react-redux';
-import { setupStore } from '../../store/store';
 const store = setupStore();
-
 
 const App = () => {
 

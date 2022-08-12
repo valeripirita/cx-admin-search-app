@@ -1,4 +1,5 @@
 import React, { ChangeEvent } from 'react';
+
 import FormSelect from '../formSelect/FormSelect';
 
 export type VentureSelectProps = {
@@ -11,7 +12,7 @@ const ventures = [
     { value: 'JPJ', title: 'Jackpotjoy' },
     { value: 'BTM', title: 'Botemania' },
     { value: 'BBNJ', title: 'Bally Bet NJ' },
-    { value: 'BBNY', title: 'Bally Bet NY' },
+    { value: 'BBNY', title: 'Bally Bet NY' }
 ]
 
 const VentureSelect = ({classNames, model, onChange}: VentureSelectProps) => {

@@ -86,9 +86,9 @@ export const accountServiceApi = createApi({
     baseQuery: fetchBaseQuery({
         baseUrl: process.env.ACCOUNT_SERVICE_HOST
     }),
-    endpoints: (build) => ({
+    endpoints: build => ({
         fetchAllAccounts: build.query<AccountServiceResponse, AccountServicePostObject>({
-            query: (data) => ({
+            query: data => ({
                 url: '/search',
                 method: 'POST',
                 body: {
