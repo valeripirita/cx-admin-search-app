@@ -24,7 +24,6 @@ const FormSelect = ({classNames, disabled, model, name, onChange, options, title
                 }>
                     { title }
                 </p> }
-            {/*FIXME: select arrow is too close to edge*/}
             <select
                 name={ name }
                 className={
