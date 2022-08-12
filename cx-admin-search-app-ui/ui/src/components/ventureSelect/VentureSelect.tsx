@@ -1,6 +1,7 @@
 import React, { ChangeEvent } from 'react';
 
 import FormSelect from '../formSelect/FormSelect';
+import { useFetchAccountVenturesQuery } from '../../store/apis/accountServiceApi';
 
 export type VentureSelectProps = {
     model: string | undefined;
@@ -8,20 +9,15 @@ export type VentureSelectProps = {
     classNames?: string;
 }
 
-const ventures = [
-    { value: 'JPJ', title: 'Jackpotjoy' },
-    { value: 'BTM', title: 'Botemania' },
-    { value: 'BBNJ', title: 'Bally Bet NJ' },
-    { value: 'BBNY', title: 'Bally Bet NY' }
-]
-
 const VentureSelect = ({classNames, model, onChange}: VentureSelectProps) => {
+
+    const {data} = useFetchAccountVenturesQuery(892);
 
     return (
         <FormSelect
             classNames={ classNames }
             name='ventures'
-            options={ ventures }
+            options={ data?.ventures.map(v => ({value: v.id, title: v.name})) || [] }
             model={ model }
             onChange={ onChange }
             title='Venture'

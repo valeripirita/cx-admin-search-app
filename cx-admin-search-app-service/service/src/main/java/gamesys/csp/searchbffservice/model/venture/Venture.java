@@ -16,11 +16,4 @@ public class Venture {
 
     @JsonProperty("partnerIds")
     private int[] partnerIds;
-
-//    public Venture(int id, String name, boolean obsolete, int[] partnerIds) {
-//        this.id = id;
-//        this.name = name;
-//        this.obsolete = obsolete;
-//        this.partnerIds = partnerIds;
-//    }
 }

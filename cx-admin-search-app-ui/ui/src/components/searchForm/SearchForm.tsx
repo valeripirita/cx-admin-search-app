@@ -32,12 +32,6 @@ const SearchForm = () => {
         setFormState({...formState, [event.target.name]: event.target.value})
     }
 
-    const {data, isLoading} = useFetchAccountVenturesQuery(892);
-
-    // useEffect(() => {
-    //     setFormState({...formState, ventureOptions: data?.ventures});
-    // });
-
     return (
         <form data-test='search-form' className="text-sm" onSubmit={handleSubmit}>
             {/*TODO: check input types*/}
