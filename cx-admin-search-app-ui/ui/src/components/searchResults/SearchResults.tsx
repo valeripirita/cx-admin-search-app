@@ -5,6 +5,7 @@ import { BarLoader } from 'react-spinners';
 import AccountStatus from '../accountStatus/AccountStatus';
 import cx from 'classnames';
 import Pagination from '../pagination/Pagination';
+import { Search } from '../icons/Icons';
 
 type SearchResultsProps = {
     searchForm: any;

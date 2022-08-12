@@ -1,4 +1,5 @@
 import React from 'react';
+import { ChevronLeft, ChevronRight } from '../icons/Icons';
 
 export type PaginationProps = {
     pagesCount: number;
@@ -15,12 +16,12 @@ const Pagination = ({currentPage, pageSize, pagesCount}: PaginationProps) => {
 
     return (
         <div className="w-full flex justify-end gap-2">
-            <a href="#" onClick={handleClick} className="w-10 h-10 rounded-md flex justify-center items-center hover:bg-primary-800 hover:text-white">{'<'}</a>
+            <a href="#" onClick={handleClick} className="w-10 h-10 rounded-md flex justify-center items-center hover:bg-primary-800 hover:text-white"><ChevronLeft /></a>
             <a href="#" onClick={handleClick} className="w-10 h-10 rounded-md bg-primary-500 text-white flex justify-center items-center hover:bg-primary-800">1</a>
             <a href="#" onClick={handleClick} className="w-10 h-10 rounded-md flex justify-center items-center hover:bg-primary-800 hover:text-white">2</a>
             <a href="#" onClick={handleClick} className="w-10 h-10 rounded-md flex justify-center items-center hover:bg-primary-800 hover:text-white">3</a>
             <a href="#" onClick={handleClick} className="w-10 h-10 rounded-md flex justify-center items-center hover:bg-primary-800 hover:text-white">4</a>
-            <a href="#" onClick={handleClick} className="w-10 h-10 rounded-md flex justify-center items-center hover:bg-primary-800 hover:text-white">{'>'}</a>
+            <a href="#" onClick={handleClick} className="w-10 h-10 rounded-md flex justify-center items-center hover:bg-primary-800 hover:text-white"><ChevronRight /></a>
         </div>
     );
 };

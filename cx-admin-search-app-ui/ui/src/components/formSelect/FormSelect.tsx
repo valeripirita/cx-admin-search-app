@@ -1,5 +1,6 @@
 import React, { ChangeEvent } from 'react';
 import cx from 'classnames';
+import { ChevronDown } from '../icons/Icons';
 
 export type FormSelectProps = {
     name: string;
@@ -13,7 +14,7 @@ export type FormSelectProps = {
 
 const FormSelect = ({classNames, disabled, model, name, onChange, options, title}: FormSelectProps) => {
     return (
-        <label className={ cx(classNames, disabled ? 'cursor-not-allowed' : 'cursor-pointer') }>
+        <label className={ cx(classNames, 'relative', disabled ? 'cursor-not-allowed' : 'cursor-pointer') }>
             { title &&
                 <p className={
                     cx(
@@ -28,7 +29,7 @@ const FormSelect = ({classNames, disabled, model, name, onChange, options, title
                 name={ name }
                 className={
                     cx(
-                        'bg-white block py-2.5 px-3 border border-neutral-400 rounded-lg w-full',
+                        'bg-white block py-2.5 px-3 border border-neutral-400 rounded-lg w-full appearance-none',
                         disabled ? 'cursor-not-allowed border-neutral-100' : 'cursor-pointer'
                     )
                 }
@@ -40,6 +41,7 @@ const FormSelect = ({classNames, disabled, model, name, onChange, options, title
                     <option key={option.value} value={option.value}>{option.title}</option>
                 )) }
             </select>
+            <ChevronDown className="absolute right-2 top-1/2 translate-y-0.5 pointer-events-none" />
         </label>
     );
 };
