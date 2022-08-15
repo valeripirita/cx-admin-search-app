@@ -1,6 +1,4 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react';
-
-import { AuthOktaSlice } from '../slices/authOktaSlice';
+import { baseApi } from './baseApi';
 
 export type Link = {
     href: string;
@@ -94,30 +92,16 @@ export type AccountVenturesResponse = {
     ventures: Venture[]
 }
 
-export const accountServiceApi = createApi({
-    reducerPath: 'accountServiceApi',
-    baseQuery: fetchBaseQuery({
-        baseUrl: process.env.ACCOUNT_SERVICE_HOST
-    }),
+export const accountServiceApi = baseApi('accountServiceApi', []).injectEndpoints({
     endpoints: build => ({
         fetchAllAccounts: build.query<AccountServiceResponse, AccountServicePostObject>({
-            queryFn: async (arg, api, extraOptions, baseQuery) => {
-
-                const { authOktaReducer } = api.getState() as { authOktaReducer: AuthOktaSlice }
-
-                const result = await baseQuery({
-                    url: '/search',
-                    method: 'POST',
-                    headers: {
-                        Authorization: `Bearer ${authOktaReducer.token}`
-                    },
-                    body: {
-                        ...arg
-                    }
-                })
-
-                return { data: result.data as AccountServiceResponse }
-            }
+            query: data => ({
+                url: '/search',
+                method: 'POST',
+                body: {
+                    ...data
+                }
+            })
         }),
         fetchAccountVentures: build.query<AccountVenturesResponse, any>({
             query: (userId) => ({
@@ -126,7 +110,7 @@ export const accountServiceApi = createApi({
             })
         })
     })
-})
+});
 
 export const {
     useFetchAllAccountsQuery,
