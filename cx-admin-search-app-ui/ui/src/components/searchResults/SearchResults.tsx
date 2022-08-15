@@ -68,10 +68,10 @@ const SearchResults = ({ searchForm }: SearchResultsProps) => {
                                     {/* Email */}
                                     <div className="flex flex-col font-light pr-2.5 basis-[17%] flex-grow-0 flex-shrink-0">
                                         <div>{account.accountId}</div>
-                                        <div className="text-sm font-light">{account.emailAddress}</div>
+                                        <div title={account.emailAddress} className="text-sm font-light truncate">{account.emailAddress}</div>
                                     </div>
                                     {/* DOB */}
-                                    <div className="font-light pr-2.5 basis-[12%] flex-grow-0 flex-shrink-0">
+                                    <div className="font-light pr-2.5 basis-[12%] flex-grow-0 flex-shrink-0 truncate">
                                         {account.personalDetails.dateOfBirth}
                                     </div>
                                     {/* Address */}

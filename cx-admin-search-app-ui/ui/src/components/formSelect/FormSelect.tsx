@@ -16,7 +16,7 @@ export type FormSelectProps = {
 
 const FormSelect = ({classNames, disabled, model, name, onChange, options, title}: FormSelectProps) => {
     return (
-        <label className={ cx(classNames, 'relative', disabled ? 'cursor-not-allowed' : 'cursor-pointer') }>
+        <label className={ cx(classNames, 'block relative', disabled ? 'cursor-not-allowed' : 'cursor-pointer') }>
             { title &&
                 <p className={
                     cx(
@@ -42,7 +42,7 @@ const FormSelect = ({classNames, disabled, model, name, onChange, options, title
                     <option key={option.value} value={option.value}>{option.title}</option>
                 )) }
             </select>
-            <ChevronDown className="absolute right-2 top-1/2 translate-y-0.5 pointer-events-none" />
+            <ChevronDown className="absolute block right-2 top-1/2 translate-y-0.5 pointer-events-none" />
         </label>
     );
 };
