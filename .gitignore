@@ -8,3 +8,4 @@
 /cx-admin-search-app-service/service/target/
 /cx-admin-search-app-ui/ui/dist/
 /e2e/node_modules/
+/cx-admin-search-app-ui/ui/coverage/

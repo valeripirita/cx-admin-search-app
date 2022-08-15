@@ -9,4 +9,5 @@ export {
     ChevronDown,
     ChevronLeft,
     ChevronRight,
-    Search}
+    Search
+}
