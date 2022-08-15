@@ -1,16 +1,16 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react';
 
-import { AuthOktaSlice } from '../slices/authOktaSlice';
+import { RootState } from '../store';
 
 const baseUrl = process.env.ACCOUNT_SERVICE_HOST;
 
 const baseQuery = fetchBaseQuery({
     baseUrl,
     prepareHeaders: async (headers, { getState }) => {
-        const idToken = (getState() as {authOktaReducer: AuthOktaSlice} ).authOktaReducer.token;
+        const token = (getState() as RootState).authOktaReducer.token;
 
-        if (idToken) {
-            headers.set('Authorization', `Bearer ${idToken}`)
+        if (token) {
+            headers.set('Authorization', `Bearer ${token}`);
         }
 
         return headers;
