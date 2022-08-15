@@ -12,6 +12,7 @@ const baseQuery = fetchBaseQuery({
     prepareHeaders: (headers, { getState }) => {
         const token = (getState() as RootState).authOktaReducer.token;
 
+        headers.set('Content-Type', 'application/json');
         if (token) {
             headers.set('Authorization', `Bearer ${token}`);
         }

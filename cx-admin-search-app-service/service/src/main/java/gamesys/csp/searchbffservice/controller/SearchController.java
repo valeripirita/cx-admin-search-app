@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
 
 @Slf4j
-@CrossOrigin("http://localhost:9001")
+@CrossOrigin("http://localhost:3000")
 @RestController
 @RequestMapping(path = "/", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 public class SearchController {
