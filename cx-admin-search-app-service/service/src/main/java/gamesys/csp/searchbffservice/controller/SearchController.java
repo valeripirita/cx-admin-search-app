@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
 
 @Slf4j
+@CrossOrigin("http://localhost:9001")
 @RestController
 public class SearchController {
     private final SearchApiService searchApiService;
@@ -33,14 +34,13 @@ public class SearchController {
         return ResponseEntity.ok("ok");
     }
 
-    @CrossOrigin
+
     @PostMapping(path = "/search")
     public Mono<String> search(@RequestBody SearchAttributes searchAttributes) throws JsonProcessingException {
         log.info("Users search is started");
         return  searchApiService.getAccountInfo(searchAttributes);
     }
 
-    @CrossOrigin
     @GetMapping (path = "/ventures")
     public Mono<String> getAccountVentures(@RequestParam int userId) throws JsonProcessingException {
         log.info("User info search is started");
