@@ -1,11 +1,13 @@
-import React, { ChangeEvent, SyntheticEvent, useCallback, useState } from 'react';
+import React, { ChangeEvent, SyntheticEvent, useCallback, useEffect, useState } from 'react';
+
+import { useOktaAuth } from '@okta/okta-react';
 
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { set as setToken } from '../../store/slices/authOktaSlice';
 import { clear, set } from '../../store/slices/searchFormSlice';
 import FormInput from '../formInput/FormInput';
 import JurisdictionSelect from '../jurisdictionSelect/JurisdictionSelect';
 import VentureSelect from '../ventureSelect/VentureSelect';
-import {useFetchAccountVenturesQuery} from '../../store/apis/accountServiceApi'
 
 // TODO:
 // when form submit happens lock ui
@@ -17,6 +19,17 @@ import {useFetchAccountVenturesQuery} from '../../store/apis/accountServiceApi'
 const SearchForm = () => {
 
     const dispatch = useAppDispatch();
+
+    const { oktaAuth } = useOktaAuth();
+
+    // TODO: move this code somewhere else on top
+    useEffect(() => {
+        const token = oktaAuth.getIdToken();
+
+        if (token) {
+            dispatch(setToken(token))
+        }
+    }, [oktaAuth])
 
     const formData = useAppSelector(state => state.searchFormReducer);
 
