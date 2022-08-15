@@ -4,9 +4,7 @@ export interface AuthOktaSlice {
     token: string
 }
 
-const initialState = {
-    token: ''
-}
+const initialState = { token: '' }
 
 export const authOktaSlice = createSlice({
     name: 'authOkta',

@@ -1,4 +1,7 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react';
+import {
+    createApi,
+    fetchBaseQuery
+} from '@reduxjs/toolkit/dist/query/react';
 
 import { RootState } from '../store';
 
@@ -6,7 +9,7 @@ const baseUrl = process.env.ACCOUNT_SERVICE_HOST;
 
 const baseQuery = fetchBaseQuery({
     baseUrl,
-    prepareHeaders: async (headers, { getState }) => {
+    prepareHeaders: (headers, { getState }) => {
         const token = (getState() as RootState).authOktaReducer.token;
 
         if (token) {
