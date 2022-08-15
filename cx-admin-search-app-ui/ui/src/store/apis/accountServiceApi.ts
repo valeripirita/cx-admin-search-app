@@ -1,4 +1,4 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react';
+import { baseApi } from './baseApi';
 
 export type Link = {
     href: string;
@@ -92,11 +92,7 @@ export type AccountVenturesResponse = {
     ventures: Venture[]
 }
 
-export const accountServiceApi = createApi({
-    reducerPath: 'accountServiceApi',
-    baseQuery: fetchBaseQuery({
-        baseUrl: process.env.ACCOUNT_SERVICE_HOST
-    }),
+export const accountServiceApi = baseApi('accountServiceApi', []).injectEndpoints({
     endpoints: build => ({
         fetchAllAccounts: build.query<AccountServiceResponse, AccountServicePostObject>({
             query: data => ({
@@ -114,7 +110,7 @@ export const accountServiceApi = createApi({
             })
         })
     })
-})
+});
 
 export const {
     useFetchAllAccountsQuery,

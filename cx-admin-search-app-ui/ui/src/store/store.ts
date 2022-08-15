@@ -1,10 +1,12 @@
 import { combineReducers,configureStore } from '@reduxjs/toolkit';
 
 import { accountServiceApi } from './apis/accountServiceApi';
+import authOktaReducer from './slices/authOktaSlice';
 import searchFormReducer from './slices/searchFormSlice';
 
 const rootReducer = combineReducers({
     searchFormReducer,
+    authOktaReducer,
     [accountServiceApi.reducerPath]: accountServiceApi.reducer
 });
 
