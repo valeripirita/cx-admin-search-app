@@ -27,6 +27,10 @@ const SearchResults = ({ searchForm }: SearchResultsProps) => {
         }
     }
 
+    if (isFetching) {
+        return <BarLoader />
+    }
+
     if (accounts?.totalResults === 0) {
         // TODO: move to separate component
         return <div>Nothing found</div>
@@ -34,7 +38,7 @@ const SearchResults = ({ searchForm }: SearchResultsProps) => {
 
     return (
         <>
-            { isFetching ? <BarLoader /> :
+            {  !isFetching &&
                 <div className="w-full flex flex-col self-start h-full">
                     <div className="w-full flex flex-col flex-nowrap rounded-md overflow-hidden flex-grow-0 flex-shrink-0 font-bold shadow-md mb-2.5">
                         <div className="bg-white px-[30px] py-2 text-primary-500">{accounts?.totalResults} Results</div>
@@ -48,7 +52,7 @@ const SearchResults = ({ searchForm }: SearchResultsProps) => {
                     </div>
 
                     <div data-test='search-result-table' className="flex flex-col gap-2.5 h-full overflow-y-auto mb-2.5">
-                        {accounts?._embedded.accounts.map((account, key) => (
+                        {accounts?.accountDtos.map((account) => (
                             <div key={account.accountId} className="relative flex flex-nowrap w-full rounded-md shadow">
                                 <div className={
                                     cx(
@@ -59,9 +63,9 @@ const SearchResults = ({ searchForm }: SearchResultsProps) => {
                                     {/* Name and created on */}
                                     <div className="flex flex-col px-2.5 basis-[25%] flex-grow-0 flex-shrink-0">
                                         <div className="flex gap-1">
-                                            <span className="text-neutral-500 font-light capitalize">{account.personalDetails.title}</span>
-                                            <span className="font-semibold capitalize">{account.personalDetails.firstName}</span>
-                                            <span className="font-semibold capitalize">{account.personalDetails.surname}</span>
+                                            <span className="text-neutral-500 font-light capitalize">{account.title}</span>
+                                            <span className="font-semibold capitalize">{account.firstName}</span>
+                                            <span className="font-semibold capitalize">{account.surname}</span>
                                         </div>
                                         <div className="text-sm font-light">{account.screenName} / 01/01/1001</div>
                                     </div>
@@ -72,19 +76,19 @@ const SearchResults = ({ searchForm }: SearchResultsProps) => {
                                     </div>
                                     {/* DOB */}
                                     <div className="font-light pr-2.5 basis-[12%] flex-grow-0 flex-shrink-0 truncate">
-                                        {account.personalDetails.dateOfBirth}
+                                        {account.dateOfBirth}
                                     </div>
                                     {/* Address */}
                                     <div className="flex flex-col pr-2.5 basis-[12%] flex-grow-0 flex-shrink-0">
-                                        <div className="font-light">{account._embedded?.residentialAddress[0]?.addressLine2}</div>
+                                        <div className="font-light">{account.addressLine2}</div>
                                         <div>
-                                            <span className="font-semibold">{account._embedded?.residentialAddress[0]?.postCode}</span>
-                                            <span className="font-light"> - {account._embedded?.residentialAddress[0]?.countryCode}</span>
+                                            <span className="font-semibold">{account.postCode}</span>
+                                            <span className="font-light"> - {account.countryCode}</span>
                                         </div>
                                     </div>
                                     {/* Phone */}
                                     <div className="pr-2.5 basis-[11%] flex-grow-0 flex-shrink-0">
-                                        {account._embedded?.contactNumbers[0].mobile.number}
+                                        {account.number}
                                     </div>
                                     {/* Venture */}
                                     <div className="flex gap-1 items-start pt-1 pr-2.5 basis-[12%] flex-grow-0 flex-shrink-0">
