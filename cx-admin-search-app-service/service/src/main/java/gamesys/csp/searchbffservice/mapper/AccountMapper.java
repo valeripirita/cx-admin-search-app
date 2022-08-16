@@ -24,6 +24,10 @@ public interface AccountMapper {
     @Mapping(target="postCode", source="embedded.residentialAddress", qualifiedByName = "postCode")
     AccountSearchDto accountResponseToAccountSearchDto(Account account);
 
+    List<AccountSearchDto> accountResponseListToAccountSearchDtoList(List<Account> account);
+
+
+
     default String number(List<ContactNumbersResponse> contactNumbers) {
         if (contactNumbers.isEmpty()) {
             return null;
