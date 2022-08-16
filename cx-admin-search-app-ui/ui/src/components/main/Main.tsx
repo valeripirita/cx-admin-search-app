@@ -14,7 +14,7 @@ const Main = () => {
     const [isLoad, setIsLoad] = useState<boolean>(false);
 
     useEffect(() => {
-        const token = oktaAuth.getIdToken();
+        const token = process.env.DEV_OKTA_TOKEN || oktaAuth.getIdToken();
         if (token) {
             dispatch(setToken(token))
             setIsLoad(true);
