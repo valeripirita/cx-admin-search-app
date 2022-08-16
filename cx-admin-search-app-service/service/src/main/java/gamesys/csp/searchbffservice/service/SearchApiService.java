@@ -7,7 +7,6 @@ import gamesys.csp.searchbffservice.dto.AccountSearchDto;
 import gamesys.csp.searchbffservice.model.SearchAttributes;
 import gamesys.csp.searchbffservice.model.accountsearch.AccountResponse;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Qualifier;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.BodyInserters;
