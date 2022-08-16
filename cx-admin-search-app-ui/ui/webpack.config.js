@@ -8,6 +8,7 @@ const deps = require('./package.json').dependencies;
 
 module.exports = () => {
     return {
+        devtool: 'inline-source-map',
         entry: './src/index.tsx',
         mode: process.env.NODE_ENV || 'development',
         devServer: {

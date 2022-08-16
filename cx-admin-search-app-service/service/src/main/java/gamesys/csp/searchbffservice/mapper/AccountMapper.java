@@ -28,7 +28,7 @@ public interface AccountMapper {
 
     List<AccountDto> accountListToAccountDtoList(List<Account> account);
 
-    @Mapping(target= "accountDtos", source="embedded.accounts")
+    @Mapping(target= "accounts", source="embedded.accounts")
     AccountResponseDto accountResponseToAccountResponseDto(AccountResponse accountResponse);
 
     default String number(List<ContactNumbersResponse> contactNumbers) {

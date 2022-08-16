@@ -8,5 +8,5 @@ public class AccountResponseDto {
 
     private int offset;
     private int totalResults;
-    private List<AccountDto> accountDtos;
+    private List<AccountDto> accounts;
 }
