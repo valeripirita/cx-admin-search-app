@@ -1,0 +1,37 @@
+pipelines:
+  cx-admin-search-app-service-build:
+    group: cx-admin-search-app
+    label_template: "1.0.${COUNT}"
+    locking: off
+    parameters:
+      PROJECT_DIR: "/usr/bin/csp-ci"
+      BUILD_PLAYBOOK_PATH: "cx-admin-search-app-service/deployment"
+      BUILD_PLAYBOOK_NAME: "build-service.yml"
+      PROJECT_PATH: "cx-admin-search-app-service/service"
+    tracking_tool:
+      link: "https://jira.gamesys.co.uk/browse/${ID}"
+      regex: "^([A-Z]*-\\d+)"
+    materials:
+      cx-admin-search-app:
+        git: git@github.gamesys.co.uk:CSP/cx-admin-search-app.git
+        branch: master
+        destination: cx-admin-search-app
+        whitelist:
+          - "cx-admin-search-app-service/service/**/*"
+    stages:
+      - build:
+          clean_workspace: true
+          jobs:
+            build:
+              tasks:
+                - exec:
+                    command: /bin/bash
+                    arguments:
+                      - -c
+                      - docker system prune -af
+                - exec:
+                    working_directory: cx-admin-search-app
+                    command: /bin/bash
+                    arguments:
+                      - -c
+                      - docker run --net=host -v /var/go/.csp-vault-password.txt:/usr/bin/csp-ci/.vault_pass -v $(pwd):/usr/bin/csp-ci/external-project -v /var/run/docker.sock:/var/run/docker.sock --rm -i gamesys-ps-private-docker-build.artifactory.gamesys.co.uk/csp-service-java11-builder:latest -i builder '#{PROJECT_DIR}/external-project/#{BUILD_PLAYBOOK_PATH}/#{BUILD_PLAYBOOK_NAME}' -vvv --vault-password-file /usr/bin/csp-ci/.vault_pass --extra-vars "extra_service_artifact_version=$GO_PIPELINE_LABEL extra_project_path=#{PROJECT_PATH}"

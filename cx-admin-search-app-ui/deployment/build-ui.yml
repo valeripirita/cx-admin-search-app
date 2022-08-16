@@ -1,0 +1,30 @@
+---
+- hosts: all
+  vars:
+    extra_service_name: "cx-admin-search-app-ui"
+    extra_deployment_path: "cx-admin-search-app-ui/deployment"
+    extra_dockerfile_path: ""
+    extra_docker_image_name: "cx-admin-search-app-ui"
+    nexus_iq_app_name: "cx-admin-search-app-ui"
+    nexus_stage: "Build"
+    zendesk_app_path: "dist/tmp"
+    sonar_project_key: "cx-admin-search-app-ui"
+    sonar_sources: "src/js"
+    sonar_tests: "src/tests"
+    sonar_report_paths: "coverage/lcov.info"
+    sonar_exclusions: "src/tests/**,src/js/store/**,src/js/index.tsx"
+  roles:
+    - clone-external-project
+    - setup-git-settings
+    - npm-login
+    - npm-install
+    - npm-unit-tests
+    - npm-build
+    - add-version
+    - sonarqube-scan
+    - verify-sonarqube-qualitygate
+    - npm-prune-production
+    - docker-login
+    - docker-build-image
+    - docker-push-image
+    - git-add-label

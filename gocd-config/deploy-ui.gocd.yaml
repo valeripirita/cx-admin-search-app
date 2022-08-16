@@ -1,0 +1,66 @@
+pipelines:
+  cx-admin-search-app-ui-deploy:
+    group: cx-admin-search-app
+    label_template: "${cx-admin-search-app-ui-build}"
+    locking: off
+    parameters:
+      PROJECT_DIR: "/usr/bin/csp-ci"
+      DEPLOYMENT_PATH: "cx-admin-search-app-ui/deployment/global"
+    environment_variables:
+      STATE_BUCKET: "{{SECRET:[secrets][STATE_BUCKET]}}"
+      AWS_REGION: "{{SECRET:[secrets][AWS_REGION]}}"
+      TFE_TOKEN: "{{SECRET:[secrets][TFE_TOKEN]}}"
+      AWS_ACCESS_KEY_ID: "{{SECRET:[secrets][AWS_SECRET_KEY_ID]}}"
+      AWS_SECRET_ACCESS_KEY: "{{SECRET:[secrets][AWS_SECRET_ACCESS_KEY]}}"
+      VAULT_BACKEND_AWS: "{{SECRET:[secrets][VAULT_BACKEND_AWS]}}"
+      VAULT_ADDR: "{{SECRET:[secrets][VAULT_ADDR]}}"
+      VAULT_ROLE_ID: "{{SECRET:[secrets][VAULT_ROLE_ID]}}"
+      VAULT_SECRET_ID: "{{SECRET:[secrets][VAULT_SECRET_ID]}}"
+      VAULT_ROLE_CSP: "{{SECRET:[secrets][VAULT_ROLE_CSP]}}"
+      VAULT_ROLE_CSP_ARN: "{{SECRET:[secrets][VAULT_ROLE_CSP_ARN]}}"
+    tracking_tool:
+      link: "https://jira.gamesys.co.uk/browse/${ID}"
+      regex: "^([A-Z]*-\\d+)"
+    materials:
+      cx-admin-search-app:
+        git: git@github.gamesys.co.uk:CSP/cx-admin-search-app.git
+        branch: master
+      cx-admin-search-app-ui-build:
+        pipeline: cx-admin-search-app-ui-build
+        stage: build
+    stages:
+      - deploy-to-dev:
+          approval: manual
+          jobs:
+            aws_deployment:
+              tasks:
+                - exec:
+                    command: /bin/bash
+                    arguments:
+                      - -c
+                      - docker system prune -af
+                - exec:
+                    command: /bin/bash
+                    arguments:
+                      - -c
+                      - echo ${TFE_TOKEN} > .terraformrc
+                - exec:
+                    command: /bin/bash
+                    arguments:
+                      - -c
+                      - envsubst < "#{DEPLOYMENT_PATH}/provider.envsubst" > "#{DEPLOYMENT_PATH}/provider.tf"
+                - exec:
+                    command: /bin/bash
+                    arguments:
+                      - -c
+                      - docker run -e TF_CLI_CONFIG_FILE=#{PROJECT_DIR}/external-project/.terraformrc -e AWS_REGION=$AWS_REGION -e AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY -v $(pwd):#{PROJECT_DIR}/external-project -w "#{PROJECT_DIR}/external-project/#{DEPLOYMENT_PATH}" -i gamesys-ps-private-docker-build.artifactory.gamesys.co.uk/csp-service-terraform-builder:latest init
+                - exec:
+                    command: /bin/bash
+                    arguments:
+                      - -c
+                      - docker run -e TF_CLI_CONFIG_FILE=#{PROJECT_DIR}/external-project/.terraformrc -e AWS_REGION=$AWS_REGION -e AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY -v $(pwd):#{PROJECT_DIR}/external-project -w "#{PROJECT_DIR}/external-project/#{DEPLOYMENT_PATH}" -i gamesys-ps-private-docker-build.artifactory.gamesys.co.uk/csp-service-terraform-builder:latest plan -var vault_addr=$VAULT_ADDR -var vault_backend_aws=$VAULT_BACKEND_AWS -var vault_role_id=$VAULT_ROLE_ID -var vault_secret_id=$VAULT_SECRET_ID -var image_version=latest -var AWS_REGION=$AWS_REGION -var vault_role_csp=$VAULT_ROLE_CSP -var vault_role_csp_arn=$VAULT_ROLE_CSP_ARN
+                - exec:
+                    command: /bin/bash
+                    arguments:
+                      - -c
+                      - docker run -e TF_CLI_CONFIG_FILE=#{PROJECT_DIR}/external-project/.terraformrc -e AWS_REGION=$AWS_REGION -e AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY -v $(pwd):#{PROJECT_DIR}/external-project -w "#{PROJECT_DIR}/external-project/#{DEPLOYMENT_PATH}" -i gamesys-ps-private-docker-build.artifactory.gamesys.co.uk/csp-service-terraform-builder:latest apply -auto-approve -var vault_addr=$VAULT_ADDR -var vault_backend_aws=$VAULT_BACKEND_AWS -var vault_role_id=$VAULT_ROLE_ID -var vault_secret_id=$VAULT_SECRET_ID -var image_version=latest -var AWS_REGION=$AWS_REGION -var vault_role_csp=$VAULT_ROLE_CSP -var vault_role_csp_arn=$VAULT_ROLE_CSP_ARN
