@@ -2,16 +2,15 @@ package gamesys.csp.searchbffservice.model.accountsearch;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
+import lombok.Data;
 import lombok.Getter;
 
-@Getter
+@Data
 public class Account {
 
     @JsonProperty("_embedded")
     private Embedded embedded;
-
     private Long accountId;
-    private String currencyIso;
     private PersonalDetails personalDetails;
     private String screenName;
     private String venture;

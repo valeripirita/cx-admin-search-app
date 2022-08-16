@@ -2,6 +2,8 @@ package gamesys.csp.searchbffservice.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import gamesys.csp.searchbffservice.mapper.AccountMapper;
+import gamesys.csp.searchbffservice.dto.AccountSearchDto;
 import gamesys.csp.searchbffservice.model.SearchAttributes;
 import gamesys.csp.searchbffservice.model.accountsearch.AccountResponse;
 import lombok.extern.slf4j.Slf4j;
@@ -16,20 +18,22 @@ import reactor.core.publisher.Mono;
 @Service
 @Slf4j
 public class SearchApiService {
-    private final WebClient searchWebClient;
+    private final WebClient accountSearchWebClient;
 
-    public SearchApiService(@Qualifier("accountSearchWebClient") WebClient searchWebClient) {
-        this.searchWebClient = searchWebClient;
+    public SearchApiService(WebClient accountSearchWebClient) {
+        this.accountSearchWebClient = accountSearchWebClient;
     }
 
-    public Mono<AccountResponse> getAccountInfo(SearchAttributes searchAttributes) throws JsonProcessingException {
-        return searchWebClient.post()
+    public Mono<AccountSearchDto> getAccountInfo(SearchAttributes searchAttributes) throws JsonProcessingException {
+        log.info("getAccountInfo started");
+        return accountSearchWebClient.post()
                 .uri(uriBuilder -> uriBuilder
                         .path("/search")
                         .build())
                 .body(BodyInserters.fromValue(getBody(searchAttributes)))
                 .retrieve()
-                .bodyToMono(AccountResponse.class);
+                .bodyToMono(AccountResponse.class)
+                .map(ar -> AccountMapper.INSTANCE.accountResponseToAccountSearchDto(ar.getEmbedded().getAccounts().get(0)));
 
     }
 
@@ -37,7 +41,5 @@ public class SearchApiService {
         var mapper = new ObjectMapper();
         return mapper.writeValueAsString(attributes);
     }
-
-
 
 }
