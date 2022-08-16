@@ -2,6 +2,7 @@ package gamesys.csp.searchbffservice.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import gamesys.csp.searchbffservice.dto.AccountResponseDto;
+import gamesys.csp.searchbffservice.dto.userventures.UserVenturesDto;
 import gamesys.csp.searchbffservice.model.SearchAttributes;
 import gamesys.csp.searchbffservice.service.VentureApiService;
 import gamesys.csp.searchbffservice.service.SearchApiService;
@@ -46,9 +47,9 @@ public class SearchController {
         return ResponseEntity.status(HttpStatus.OK).body(searchApiService.getAccountInfo(searchAttributes));
     }
 
-    @GetMapping (path = "/ventures")
-    public Mono<String> getAccountVentures(@RequestParam int userId) throws JsonProcessingException {
-        log.info("User info search is started");
-        return accountSecurityApiService.getUserVentures(userId);
+    @GetMapping(path = "/ventures")
+    public ResponseEntity<Mono<UserVenturesDto>> getAccountVentures(@RequestParam int userId) {
+        log.info("User ventures search is started.");
+        return ResponseEntity.status(HttpStatus.OK).body(accountSecurityApiService.getUserVentures(userId));
     }
 }
