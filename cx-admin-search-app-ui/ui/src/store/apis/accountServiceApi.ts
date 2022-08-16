@@ -17,7 +17,7 @@ export type Account = {
 }
 
 export type AccountServiceResponse = {
-    accountDtos: Account[],
+    accounts: Account[],
     totalResults: number,
     offset: number,
 }

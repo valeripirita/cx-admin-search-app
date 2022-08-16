@@ -42,7 +42,7 @@ const FormSelect = ({classNames, disabled, model, name, onChange, options, title
                     <option key={option.value} value={option.value}>{option.title}</option>
                 )) }
             </select>
-            <ChevronDown className="absolute block right-2 top-1/2 translate-y-0.5 pointer-events-none" />
+            <ChevronDown className="absolute block right-2 top-1/2 translate-y-1/4 pointer-events-none" />
         </label>
     );
 };

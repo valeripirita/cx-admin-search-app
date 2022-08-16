@@ -52,7 +52,7 @@ const SearchResults = ({ searchForm }: SearchResultsProps) => {
                     </div>
 
                     <div data-test='search-result-table' className="flex flex-col gap-2.5 h-full overflow-y-auto mb-2.5">
-                        {accounts?.accountDtos.map((account) => (
+                        {accounts?.accounts.map((account) => (
                             <div key={account.accountId} className="relative flex flex-nowrap w-full rounded-md shadow">
                                 <div className={
                                     cx(
@@ -63,7 +63,7 @@ const SearchResults = ({ searchForm }: SearchResultsProps) => {
                                     {/* Name and created on */}
                                     <div className="flex flex-col px-2.5 basis-[25%] flex-grow-0 flex-shrink-0">
                                         <div className="flex gap-1">
-                                            <span className="text-neutral-500 font-light capitalize">{account.title}</span>
+                                            { account.title && <span className="text-neutral-500 font-light capitalize">{account.title}</span> }
                                             <span className="font-semibold capitalize">{account.firstName}</span>
                                             <span className="font-semibold capitalize">{account.surname}</span>
                                         </div>
@@ -115,7 +115,7 @@ const SearchResults = ({ searchForm }: SearchResultsProps) => {
                     </div>
 
                     {/* Pagination */}
-                    <Pagination currentPage={1} pageSize={10} pagesCount={20}/>
+                    <Pagination currentPage={(accounts!.offset / 10) + 1} pageSize={10} totalAmount={accounts!.totalResults}/>
                 </div> }
         </>
     );
