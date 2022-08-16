@@ -1,11 +1,10 @@
 package gamesys.csp.searchbffservice.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import gamesys.csp.searchbffservice.dto.AccountSearchDto;
+import gamesys.csp.searchbffservice.dto.AccountResponseDto;
 import gamesys.csp.searchbffservice.model.SearchAttributes;
 import gamesys.csp.searchbffservice.service.VentureApiService;
 import gamesys.csp.searchbffservice.service.SearchApiService;
-import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -42,7 +41,7 @@ public class SearchController {
 
 
     @PostMapping(path = "/search")
-    public ResponseEntity<Mono<List<AccountSearchDto>>> search(@RequestBody SearchAttributes searchAttributes) throws JsonProcessingException {
+    public ResponseEntity<Mono<AccountResponseDto>> search(@RequestBody SearchAttributes searchAttributes) throws JsonProcessingException {
         log.info("Users search is started. searchAttributes is: {} ", searchAttributes);
         return ResponseEntity.status(HttpStatus.OK).body(searchApiService.getAccountInfo(searchAttributes));
     }

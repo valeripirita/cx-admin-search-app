@@ -4,7 +4,7 @@ import java.util.Date;
 import lombok.Data;
 
 @Data
-public class AccountSearchDto {
+public class AccountDto {
 
     private Long accountId;
     private String venture;

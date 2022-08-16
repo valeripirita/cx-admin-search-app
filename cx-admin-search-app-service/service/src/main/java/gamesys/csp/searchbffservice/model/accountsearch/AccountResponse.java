@@ -6,6 +6,8 @@ import lombok.Getter;
 
 @Getter
 public class AccountResponse {
+    private int offset;
+    private int totalResults;
     @JsonProperty("_embedded")
     private Embedded embedded;
 

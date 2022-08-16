@@ -1,7 +1,9 @@
 package gamesys.csp.searchbffservice.mapper;
 
-import gamesys.csp.searchbffservice.dto.AccountSearchDto;
+import gamesys.csp.searchbffservice.dto.AccountDto;
+import gamesys.csp.searchbffservice.dto.AccountResponseDto;
 import gamesys.csp.searchbffservice.model.accountsearch.Account;
+import gamesys.csp.searchbffservice.model.accountsearch.AccountResponse;
 import gamesys.csp.searchbffservice.model.accountsearch.ContactNumbersResponse;
 import gamesys.csp.searchbffservice.model.accountsearch.ResidentialAddress;
 import java.util.List;
@@ -22,11 +24,12 @@ public interface AccountMapper {
     @Mapping(target="addressLine2", source="embedded.residentialAddress", qualifiedByName = "addressLine2")
     @Mapping(target="countryCode", source="embedded.residentialAddress", qualifiedByName = "countryCode")
     @Mapping(target="postCode", source="embedded.residentialAddress", qualifiedByName = "postCode")
-    AccountSearchDto accountResponseToAccountSearchDto(Account account);
+    AccountDto accountResponseToAccountDto(Account account);
 
-    List<AccountSearchDto> accountResponseListToAccountSearchDtoList(List<Account> account);
+    List<AccountDto> accountListToAccountDtoList(List<Account> account);
 
-
+    @Mapping(target= "accountDtos", source="embedded.accounts")
+    AccountResponseDto accountResponseToAccountResponseDto(AccountResponse accountResponse);
 
     default String number(List<ContactNumbersResponse> contactNumbers) {
         if (contactNumbers.isEmpty()) {
