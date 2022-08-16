@@ -41,6 +41,21 @@ services:
     networks:
       search_app_net:
         ipv4_address: "192.168.1.10"
+  bdd-tests:
+    container_name: cx-admin-search-bdd-tests
+    image: cx-admin-search-bdd-tests
+    build:
+      context: .
+      dockerfile: Dockerfile-e2e
+    ports:
+      - "8081:8081"
+    depends_on:
+      - search-app-ui
+      - search-app-bff
+      - search-app-harness
+    networks:
+      search_app_net:
+        ipv4_address: "192.168.1.15"
 
 networks:
   search_app_net:
