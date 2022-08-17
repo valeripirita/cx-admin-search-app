@@ -4,20 +4,17 @@ import { BarLoader } from 'react-spinners';
 import cx from 'classnames';
 
 import { useFetchAllAccountsQuery } from '../../store/apis/accountServiceApi';
+import AccountListHeader from '../accountListHeader/AccountListHeader';
 import AccountStatus from '../accountStatus/AccountStatus';
 import Pagination from '../pagination/Pagination';
-import { tableHeadCells } from '../searchOutput/helpers';
 
 type SearchResultsProps = {
     searchForm: any;
 }
 
-// TODO:
-// ask when should pagination appear
-
 const SearchResults = ({ searchForm }: SearchResultsProps) => {
 
-    const { data: accounts, isFetching } = useFetchAllAccountsQuery(searchForm);
+    const { data: accounts, isFetching, isError } = useFetchAllAccountsQuery(searchForm);
 
     const getVentureImage = (ventureName: string) => {
         try {
@@ -31,8 +28,11 @@ const SearchResults = ({ searchForm }: SearchResultsProps) => {
         return <BarLoader />
     }
 
+    if (isError) {
+        return <div>Something went wrong</div>
+    }
+
     if (accounts?.totalResults === 0) {
-        // TODO: move to separate component
         return <div>Nothing found</div>
     }
 
@@ -40,23 +40,14 @@ const SearchResults = ({ searchForm }: SearchResultsProps) => {
         <>
             {  !isFetching &&
                 <div className="w-full flex flex-col self-start h-full">
-                    <div className="w-full flex flex-col flex-nowrap rounded-md overflow-hidden flex-grow-0 flex-shrink-0 font-bold shadow-md mb-2.5">
-                        <div className="bg-white px-[30px] py-2 text-primary-500">{accounts?.totalResults} Results</div>
-                        <div className="flex flex-nowrap justify-start align-baseline bg-primary-300 px-5 text-sm">
-                            {tableHeadCells.map((cell, index) => {
-                                return (
-                                    <div key={index} style={{flexBasis: `${cell.width}%`}} className={cx('px-2.5 py-2 flex-grow-0 flex-shrink-0')}>{cell.title}</div>
-                                )
-                            })}
-                        </div>
-                    </div>
+                    <AccountListHeader totalResults={ accounts!.totalResults } />
 
                     <div data-test='search-result-table' className="flex flex-col gap-2.5 h-full overflow-y-auto mb-2.5">
                         {accounts?.accounts.map((account) => (
-                            <div key={account.accountId} className="relative flex flex-nowrap w-full rounded-md shadow">
+                            <div key={account.accountId} className="relative flex flex-nowrap w-full rounded-md shadow h-[64px]">
                                 <div className={
                                     cx(
-                                        'flex rounded-l-md py-2 pl-5 bg-white w-full',
+                                        'flex rounded-l-md py-2 pl-5 bg-white w-full h-[64px] box-border',
                                         !account.open && 'border-2 border-error-100 border-r-0 opacity-30'
                                     )
                                 }>

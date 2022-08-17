@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Check should render 1`] = `
+<DocumentFragment>
+  <svg
+    data-file-name="SvgCheck"
+  />
+</DocumentFragment>
+`;

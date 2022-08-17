@@ -49,7 +49,6 @@ const SearchForm = () => {
                     classNames="-mt-3.5"
                     title="Member ID"
                     onChange={handleChange}
-                    disabled={true}
                 />
                 <FormInput
                     name="emailAddress"
@@ -57,7 +56,6 @@ const SearchForm = () => {
                     classNames="-mt-3.5"
                     title="Email"
                     onChange={handleChange}
-                    disabled={true}
                 />
                 <FormInput
                     name="postCode"
@@ -65,7 +63,6 @@ const SearchForm = () => {
                     classNames="-mt-3.5"
                     title="Postcode"
                     onChange={handleChange}
-                    disabled={true}
                 />
                 <FormInput
                     name="phone"
@@ -73,7 +70,6 @@ const SearchForm = () => {
                     classNames="-mt-3.5"
                     title="Phone"
                     onChange={handleChange}
-                    disabled={true}
                 />
             </fieldset>
             <fieldset className="mb-2 w-full">
@@ -100,7 +96,6 @@ const SearchForm = () => {
                     classNames="-mt-3.5"
                     title="Last name"
                     onChange={handleChange}
-                    disabled={true}
                 />
                 <FormInput
                     name="firstName"
@@ -108,7 +103,6 @@ const SearchForm = () => {
                     classNames="-mt-3.5"
                     title="First name"
                     onChange={handleChange}
-                    disabled={true}
                 />
                 <FormInput
                     name="dateOfBirth"
@@ -116,7 +110,6 @@ const SearchForm = () => {
                     classNames="-mt-3.5"
                     title="DOB"
                     onChange={handleChange}
-                    disabled={true}
                 />
             </fieldset>
             <button className="uppercase bg-primary-500 text-white w-full p-3.5 rounded-lg" type='submit'>Search</button>

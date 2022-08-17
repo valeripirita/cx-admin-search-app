@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
 import { Venture } from '../apis/accountServiceApi';
 
 export interface SearchFormSlice {
@@ -16,7 +17,7 @@ export interface SearchFormSlice {
     ventureOptions?: Venture[];
 }
 
-const initialState: SearchFormSlice = {screenName: 'test1'}
+const initialState: SearchFormSlice = {};
 
 export const searchFormSlice = createSlice({
     name: 'searchForm',
