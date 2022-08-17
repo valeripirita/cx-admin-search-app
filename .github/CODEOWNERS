@@ -1,5 +1,2 @@
-# These owners will be the default owners for everything in
-# the repo. Unless a later match takes precedence,
-# @global-owner1 and @global-owner2 will be requested for
-# review when someone opens a pull request.
-*       @serdar-yuksel @andrei-samborskii @artjom-sakirov
+*       @serdar-yuksel @ivan-galkin @andrei-samborskii @artjom-sakirov @sadig-eyvazov @valeri-aleksejev @igor-zavorotnyi @mina-salari @assanali-nur
+

@@ -1,0 +1,1010 @@
+{
+  "_links": {
+    "self": {
+      "href": "/account-api/v2/accounts/search?offset=0&limit=10"
+    },
+    "first": {
+      "href": "/account-api/v2/accounts/search?offset=0&limit=10"
+    },
+    "last": {
+      "href": "/account-api/v2/accounts/search?offset=2570&limit=10"
+    },
+    "next": {
+      "href": "/account-api/v2/accounts/search?offset=10&limit=10"
+    }
+  },
+  "limit": 10,
+  "offset": 0,
+  "totalResults": 2572,
+  "_embedded": {
+    "accounts": [
+      {
+        "accountId": 13263547,
+        "acquisitionPartnerId": 5,
+        "currencyIso": "GBP",
+        "emailAddress": "testauseramma@test.com",
+        "emailVerificationStatus": "PENDING",
+        "open": false,
+        "personalDetails": {
+          "dateOfBirth": "1976-02-02",
+          "title": "mr",
+          "firstName": "adam",
+          "surname": "zed"
+        },
+        "screenName": "testauseramma",
+        "venture": "jackpotjoy",
+        "_embedded": {
+          "contactNumbers": [
+            {
+              "_links": {
+                "self": {
+                  "href": "/account-api/v2/accounts/search/13263547/contact-numbers"
+                }
+              },
+              "home": {
+                "number": "0123123",
+                "verifiedStatus": "UNASSESSED"
+              },
+              "mobile": {
+                "number": "01234567890",
+                "verifiedStatus": "UNASSESSED"
+              },
+              "work": {
+                "number": null,
+                "verifiedStatus": "UNASSESSED"
+              }
+            }
+          ],
+          "residentialAddress": [
+            {
+              "_links": {
+                "self": {
+                  "href": "/account-api/v2/accounts/search/13263547/residential-address"
+                }
+              },
+              "addressLine1": "Swan Gardens",
+              "addressLine2": "10 Piccadilly",
+              "addressLine3": "London",
+              "addressLine4": "WEST_YORKSHIRE",
+              "countryCode": "GBR",
+              "postCode": "W1J0DD"
+            }
+          ],
+          "subscriptionPreferences": [
+            {
+              "_links": {
+                "self": {
+                  "href": "/account-api/v2/accounts/search/13263547/subscription-preferences"
+                }
+              },
+              "subscriptionPreferences": [
+                {
+                  "type": "RECEIVE_GIFT",
+                  "status": "SUBSCRIBED"
+                },
+                {
+                  "type": "RECEIVE_CALL",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "SMS",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "DO_NOT_SHARE_DATA_WITH_PARTNER",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "THIRD_PARTY_SMS",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "ATTEND_EVENT",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "POST",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "EMAIL",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "THIRD_PARTY_EMAIL",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "SHARE_DATA_WITH_PARTNER",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "THIRD_PARTY_POST",
+                  "status": "UNSUBSCRIBED"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "accountId": 13273803,
+        "acquisitionPartnerId": 5,
+        "currencyIso": "GBP",
+        "emailAddress": "wwrq@gmail.com",
+        "emailVerificationStatus": "PENDING",
+        "open": false,
+        "personalDetails": {
+          "dateOfBirth": "1993-01-03",
+          "title": "mrs",
+          "firstName": "nesrine",
+          "surname": "karoui",
+          "middleName": ""
+        },
+        "screenName": "test1709",
+        "venture": "jackpotjoy",
+        "_embedded": {
+          "contactNumbers": [
+            {
+              "_links": {
+                "self": {
+                  "href": "/account-api/v2/accounts/search/13273803/contact-numbers"
+                }
+              },
+              "home": {
+                "number": null,
+                "verifiedStatus": "UNASSESSED"
+              },
+              "mobile": {
+                "number": "07557905880",
+                "verifiedStatus": "UNASSESSED"
+              },
+              "work": {
+                "number": null,
+                "verifiedStatus": "UNASSESSED"
+              }
+            }
+          ],
+          "residentialAddress": [
+            {
+              "_links": {
+                "self": {
+                  "href": "/account-api/v2/accounts/search/13273803/residential-address"
+                }
+              },
+              "addressLine1": "Swan Gardens",
+              "addressLine2": "10 Piccadilly",
+              "addressLine3": "London",
+              "addressLine4": "Westminster",
+              "countryCode": "GBR",
+              "postCode": "W1J0DD"
+            }
+          ],
+          "subscriptionPreferences": [
+            {
+              "_links": {
+                "self": {
+                  "href": "/account-api/v2/accounts/search/13273803/subscription-preferences"
+                }
+              },
+              "subscriptionPreferences": [
+                {
+                  "type": "RECEIVE_CALL",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "SMS",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "DO_NOT_SHARE_DATA_WITH_PARTNER",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "RECEIVE_GIFT",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "THIRD_PARTY_SMS",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "ATTEND_EVENT",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "POST",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "EMAIL",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "THIRD_PARTY_EMAIL",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "SHARE_DATA_WITH_PARTNER",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "THIRD_PARTY_POST",
+                  "status": "UNSUBSCRIBED"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "accountId": 13273804,
+        "acquisitionPartnerId": 5,
+        "currencyIso": "GBP",
+        "emailAddress": "nes.oui@gmail.com",
+        "emailVerificationStatus": "PENDING",
+        "open": false,
+        "personalDetails": {
+          "dateOfBirth": "1999-03-01",
+          "title": "mrs",
+          "firstName": "wrwer",
+          "surname": "werwerwer"
+        },
+        "screenName": "test17091",
+        "venture": "jackpotjoy",
+        "_embedded": {
+          "contactNumbers": [
+            {
+              "_links": {
+                "self": {
+                  "href": "/account-api/v2/accounts/search/13273804/contact-numbers"
+                }
+              },
+              "home": {
+                "number": null,
+                "verifiedStatus": "UNASSESSED"
+              },
+              "mobile": {
+                "number": "07557905880",
+                "verifiedStatus": "VERIFIED"
+              },
+              "work": {
+                "number": null,
+                "verifiedStatus": "UNASSESSED"
+              }
+            }
+          ],
+          "residentialAddress": [
+            {
+              "_links": {
+                "self": {
+                  "href": "/account-api/v2/accounts/search/13273804/residential-address"
+                }
+              },
+              "addressLine1": "Swan Gardens",
+              "addressLine2": "10 Piccadilly",
+              "addressLine3": "London",
+              "addressLine4": "Westminster",
+              "countryCode": "GBR",
+              "postCode": "W1J0DD"
+            }
+          ],
+          "subscriptionPreferences": [
+            {
+              "_links": {
+                "self": {
+                  "href": "/account-api/v2/accounts/search/13273804/subscription-preferences"
+                }
+              },
+              "subscriptionPreferences": [
+                {
+                  "type": "THIRD_PARTY_POST",
+                  "status": "SUBSCRIBED"
+                },
+                {
+                  "type": "THIRD_PARTY_SMS",
+                  "status": "SUBSCRIBED"
+                },
+                {
+                  "type": "POST",
+                  "status": "SUBSCRIBED"
+                },
+                {
+                  "type": "RECEIVE_CALL",
+                  "status": "SUBSCRIBED"
+                },
+                {
+                  "type": "RECEIVE_GIFT",
+                  "status": "SUBSCRIBED"
+                },
+                {
+                  "type": "THIRD_PARTY_EMAIL",
+                  "status": "SUBSCRIBED"
+                },
+                {
+                  "type": "EMAIL",
+                  "status": "SUBSCRIBED"
+                },
+                {
+                  "type": "SMS",
+                  "status": "SUBSCRIBED"
+                },
+                {
+                  "type": "DO_NOT_SHARE_DATA_WITH_PARTNER",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "ATTEND_EVENT",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "SHARE_DATA_WITH_PARTNER",
+                  "status": "UNSUBSCRIBED"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "accountId": 13273805,
+        "acquisitionPartnerId": 5,
+        "currencyIso": "GBP",
+        "emailAddress": "wqeqw.w@gmail.com",
+        "emailVerificationStatus": "PENDING",
+        "open": false,
+        "personalDetails": {
+          "dateOfBirth": "1986-02-01",
+          "title": "ms",
+          "firstName": "qwe",
+          "surname": "qwe",
+          "middleName": ""
+        },
+        "screenName": "test17092",
+        "venture": "jackpotjoy",
+        "_embedded": {
+          "contactNumbers": [
+            {
+              "_links": {
+                "self": {
+                  "href": "/account-api/v2/accounts/search/13273805/contact-numbers"
+                }
+              },
+              "home": {
+                "number": null,
+                "verifiedStatus": "UNASSESSED"
+              },
+              "mobile": {
+                "number": "07557905880",
+                "verifiedStatus": "UNASSESSED"
+              },
+              "work": {
+                "number": null,
+                "verifiedStatus": "UNASSESSED"
+              }
+            }
+          ],
+          "residentialAddress": [
+            {
+              "_links": {
+                "self": {
+                  "href": "/account-api/v2/accounts/search/13273805/residential-address"
+                }
+              },
+              "addressLine1": "Swan Gardens",
+              "addressLine2": "10 Piccadilly",
+              "addressLine3": "London",
+              "addressLine4": "Westminster",
+              "countryCode": "GBR",
+              "postCode": "W1J0DD"
+            }
+          ],
+          "subscriptionPreferences": [
+            {
+              "_links": {
+                "self": {
+                  "href": "/account-api/v2/accounts/search/13273805/subscription-preferences"
+                }
+              },
+              "subscriptionPreferences": [
+                {
+                  "type": "RECEIVE_CALL",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "SMS",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "DO_NOT_SHARE_DATA_WITH_PARTNER",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "RECEIVE_GIFT",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "THIRD_PARTY_SMS",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "ATTEND_EVENT",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "POST",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "EMAIL",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "THIRD_PARTY_EMAIL",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "SHARE_DATA_WITH_PARTNER",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "THIRD_PARTY_POST",
+                  "status": "UNSUBSCRIBED"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "accountId": 13273807,
+        "acquisitionPartnerId": 5,
+        "currencyIso": "GBP",
+        "emailAddress": "test.mm@gmail.com",
+        "emailVerificationStatus": "PENDING",
+        "open": false,
+        "personalDetails": {
+          "dateOfBirth": "2001-02-01",
+          "title": "mrs",
+          "firstName": "testtestq",
+          "surname": "testme",
+          "middleName": ""
+        },
+        "screenName": "testwqrwerwe",
+        "venture": "jackpotjoy",
+        "_embedded": {
+          "contactNumbers": [
+            {
+              "_links": {
+                "self": {
+                  "href": "/account-api/v2/accounts/search/13273807/contact-numbers"
+                }
+              },
+              "home": {
+                "number": null,
+                "verifiedStatus": "UNASSESSED"
+              },
+              "mobile": {
+                "number": "07989839829",
+                "verifiedStatus": "UNASSESSED"
+              },
+              "work": {
+                "number": null,
+                "verifiedStatus": "UNASSESSED"
+              }
+            }
+          ],
+          "residentialAddress": [
+            {
+              "_links": {
+                "self": {
+                  "href": "/account-api/v2/accounts/search/13273807/residential-address"
+                }
+              },
+              "addressLine1": "Swan Gardens",
+              "addressLine2": "10 Piccadilly",
+              "addressLine3": "London",
+              "addressLine4": "Westminster",
+              "countryCode": "GBR",
+              "postCode": "W1J0DD"
+            }
+          ],
+          "subscriptionPreferences": [
+            {
+              "_links": {
+                "self": {
+                  "href": "/account-api/v2/accounts/search/13273807/subscription-preferences"
+                }
+              },
+              "subscriptionPreferences": [
+                {
+                  "type": "RECEIVE_CALL",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "SMS",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "DO_NOT_SHARE_DATA_WITH_PARTNER",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "RECEIVE_GIFT",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "THIRD_PARTY_SMS",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "ATTEND_EVENT",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "POST",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "EMAIL",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "THIRD_PARTY_EMAIL",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "SHARE_DATA_WITH_PARTNER",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "THIRD_PARTY_POST",
+                  "status": "UNSUBSCRIBED"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "accountId": 13274738,
+        "acquisitionPartnerId": 5,
+        "currencyIso": "GBP",
+        "emailAddress": "efefji@ya.tu",
+        "emailVerificationStatus": "PENDING",
+        "open": false,
+        "personalDetails": {
+          "dateOfBirth": "1990-05-17",
+          "title": "mr",
+          "firstName": "rest",
+          "surname": "erew",
+          "middleName": ""
+        },
+        "screenName": "test77777",
+        "venture": "jackpotjoy",
+        "_embedded": {
+          "contactNumbers": [
+            {
+              "_links": {
+                "self": {
+                  "href": "/account-api/v2/accounts/search/13274738/contact-numbers"
+                }
+              },
+              "home": {
+                "number": null,
+                "verifiedStatus": "UNASSESSED"
+              },
+              "mobile": {
+                "number": "3243443243",
+                "verifiedStatus": "UNASSESSED"
+              },
+              "work": {
+                "number": null,
+                "verifiedStatus": "UNASSESSED"
+              }
+            }
+          ],
+          "residentialAddress": [
+            {
+              "_links": {
+                "self": {
+                  "href": "/account-api/v2/accounts/search/13274738/residential-address"
+                }
+              },
+              "addressLine1": "Swan Gardens",
+              "addressLine2": "10 Piccadilly",
+              "addressLine3": "London",
+              "addressLine4": "Westminster",
+              "countryCode": "GBR",
+              "postCode": "W1J0DD"
+            }
+          ],
+          "subscriptionPreferences": [
+            {
+              "_links": {
+                "self": {
+                  "href": "/account-api/v2/accounts/search/13274738/subscription-preferences"
+                }
+              },
+              "subscriptionPreferences": [
+                {
+                  "type": "RECEIVE_CALL",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "SMS",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "DO_NOT_SHARE_DATA_WITH_PARTNER",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "RECEIVE_GIFT",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "THIRD_PARTY_SMS",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "ATTEND_EVENT",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "POST",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "EMAIL",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "THIRD_PARTY_EMAIL",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "SHARE_DATA_WITH_PARTNER",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "THIRD_PARTY_POST",
+                  "status": "UNSUBSCRIBED"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "accountId": 13281134,
+        "acquisitionPartnerId": 5,
+        "currencyIso": "GBP",
+        "emailAddress": "fsdgdfgsrg@gamesys.co.uk",
+        "emailVerificationStatus": "PENDING",
+        "open": true,
+        "personalDetails": {
+          "dateOfBirth": "1985-10-03",
+          "title": "mrs",
+          "firstName": "ksenia",
+          "surname": "vets",
+          "middleName": ""
+        },
+        "screenName": "testksenia123",
+        "venture": "jackpotjoy",
+        "_embedded": {
+          "contactNumbers": [
+            {
+              "_links": {
+                "self": {
+                  "href": "/account-api/v2/accounts/search/13281134/contact-numbers"
+                }
+              },
+              "home": {
+                "number": null,
+                "verifiedStatus": "UNASSESSED"
+              },
+              "mobile": {
+                "number": "46246246",
+                "verifiedStatus": "UNASSESSED"
+              },
+              "work": {
+                "number": null,
+                "verifiedStatus": "UNASSESSED"
+              }
+            }
+          ],
+          "residentialAddress": [
+            {
+              "_links": {
+                "self": {
+                  "href": "/account-api/v2/accounts/search/13281134/residential-address"
+                }
+              },
+              "addressLine1": "fsdhfdshgh",
+              "addressLine2": "",
+              "addressLine3": "",
+              "addressLine4": "F",
+              "countryCode": "GBR",
+              "postCode": "W1J0DD"
+            }
+          ],
+          "subscriptionPreferences": [
+            {
+              "_links": {
+                "self": {
+                  "href": "/account-api/v2/accounts/search/13281134/subscription-preferences"
+                }
+              },
+              "subscriptionPreferences": [
+                {
+                  "type": "RECEIVE_GIFT",
+                  "status": "SUBSCRIBED"
+                },
+                {
+                  "type": "RECEIVE_CALL",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "SMS",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "DO_NOT_SHARE_DATA_WITH_PARTNER",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "THIRD_PARTY_SMS",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "ATTEND_EVENT",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "POST",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "EMAIL",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "THIRD_PARTY_EMAIL",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "SHARE_DATA_WITH_PARTNER",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "THIRD_PARTY_POST",
+                  "status": "UNSUBSCRIBED"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "accountId": 13281144,
+        "acquisitionPartnerId": 5,
+        "currencyIso": "GBP",
+        "emailAddress": "ksenia876@gamesys.co.uk",
+        "emailVerificationStatus": "PENDING",
+        "open": false,
+        "personalDetails": {
+          "dateOfBirth": "1985-10-03",
+          "title": "miss",
+          "firstName": "ksenia",
+          "surname": "vet"
+        },
+        "screenName": "testuser345",
+        "venture": "jackpotjoy",
+        "_embedded": {
+          "contactNumbers": [
+            {
+              "_links": {
+                "self": {
+                  "href": "/account-api/v2/accounts/search/13281144/contact-numbers"
+                }
+              },
+              "home": {
+                "number": null,
+                "verifiedStatus": "UNASSESSED"
+              },
+              "mobile": {
+                "number": "46246246",
+                "verifiedStatus": "UNASSESSED"
+              },
+              "work": {
+                "number": null,
+                "verifiedStatus": "UNASSESSED"
+              }
+            }
+          ],
+          "residentialAddress": [
+            {
+              "_links": {
+                "self": {
+                  "href": "/account-api/v2/accounts/search/13281144/residential-address"
+                }
+              },
+              "addressLine1": "fsdhfdshgh",
+              "addressLine2": "khfk",
+              "addressLine3": "ghkffg",
+              "addressLine4": "",
+              "countryCode": "GBR",
+              "postCode": "W1J0DD"
+            }
+          ],
+          "subscriptionPreferences": [
+            {
+              "_links": {
+                "self": {
+                  "href": "/account-api/v2/accounts/search/13281144/subscription-preferences"
+                }
+              },
+              "subscriptionPreferences": [
+                {
+                  "type": "RECEIVE_CALL",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "SMS",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "DO_NOT_SHARE_DATA_WITH_PARTNER",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "RECEIVE_GIFT",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "THIRD_PARTY_SMS",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "ATTEND_EVENT",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "POST",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "EMAIL",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "THIRD_PARTY_EMAIL",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "SHARE_DATA_WITH_PARTNER",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "THIRD_PARTY_POST",
+                  "status": "UNSUBSCRIBED"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "accountId": 13284175,
+        "acquisitionPartnerId": 5,
+        "currencyIso": "GBP",
+        "emailAddress": "ariona64@amentionq.com",
+        "emailVerificationStatus": "PENDING",
+        "open": true,
+        "personalDetails": {
+          "dateOfBirth": "1990-01-01",
+          "title": "miss",
+          "firstName": "teste",
+          "surname": "teste",
+          "middleName": ""
+        },
+        "screenName": "teste12345",
+        "venture": "jackpotjoy",
+        "_embedded": {
+          "contactNumbers": [
+            {
+              "_links": {
+                "self": {
+                  "href": "/account-api/v2/accounts/search/13284175/contact-numbers"
+                }
+              },
+              "home": {
+                "number": null,
+                "verifiedStatus": "UNASSESSED"
+              },
+              "mobile": {
+                "number": "4647567",
+                "verifiedStatus": "UNASSESSED"
+              },
+              "work": {
+                "number": null,
+                "verifiedStatus": "UNASSESSED"
+              }
+            }
+          ],
+          "residentialAddress": [
+            {
+              "_links": {
+                "self": {
+                  "href": "/account-api/v2/accounts/search/13284175/residential-address"
+                }
+              },
+              "addressLine1": "Swan Gardens",
+              "addressLine2": "10 Piccadilly",
+              "addressLine3": "London",
+              "addressLine4": "Westminster",
+              "countryCode": "GBR",
+              "postCode": "W1J0DD"
+            }
+          ],
+          "subscriptionPreferences": [
+            {
+              "_links": {
+                "self": {
+                  "href": "/account-api/v2/accounts/search/13284175/subscription-preferences"
+                }
+              },
+              "subscriptionPreferences": [
+                {
+                  "type": "RECEIVE_GIFT",
+                  "status": "SUBSCRIBED"
+                },
+                {
+                  "type": "RECEIVE_CALL",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "SMS",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "DO_NOT_SHARE_DATA_WITH_PARTNER",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "THIRD_PARTY_SMS",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "ATTEND_EVENT",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "POST",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "EMAIL",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "THIRD_PARTY_EMAIL",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "SHARE_DATA_WITH_PARTNER",
+                  "status": "UNSUBSCRIBED"
+                },
+                {
+                  "type": "THIRD_PARTY_POST",
+                  "status": "UNSUBSCRIBED"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

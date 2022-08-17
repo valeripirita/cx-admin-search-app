@@ -1,0 +1,45 @@
+server:
+  jetty:
+    threads:
+      idle-timeout: 1000
+      max: 20
+      min: 10
+  port: 8080
+  servlet:
+    contextPath: /
+
+management:
+  endpoint:
+    health:
+      group:
+        readiness:
+          include: ping
+        liveness:
+          include: ping
+  endpoints:
+    web:
+      exposure:
+        include: health
+      base-path: /
+  server:
+    port: 8081
+
+logging:
+  file.name: ./cx-admin-search-app-service/service/log/app.log
+  level:
+    web: INFO
+
+account-service:
+  host: ${ACCOUNT_SERVICE_HOST:http://account-services.private.be.int08.integration.pgt.gaia}
+  path: /account-api/v2/accounts
+  api-key: ${ACCOUNT_SERVICE_API_KEY:api-key}
+
+account-security-service:
+  host: ${ACCOUNT_SECURITY_SERVICE_HOST:http://services-eu.int08.integration.pgt.gaia}
+  path: /account-security-api/v1
+  api-key: ${ACCOUNT_SECURITY_SERVICE_API_KEY:api-key}
+
+site-config-service:
+  host: ${SITE_CONFIG_SERVICE_HOST:http://site-config-service.private.be.int05.integration.pgt.gaia}
+  path: /site-config-api
+  api-key: ${SITE_CONFIG_SERVICE_API_KEY:8edb8fd8-9f9f-11ec-b909-0242ac120002}

@@ -1,0 +1,7 @@
+FROM cypress/included:10.4.0
+WORKDIR /e2e
+COPY --chown=node:node e2e/package*.json ./
+COPY --chown=node:node e2e /e2e
+RUN npm install
+USER node
+CMD ["cypress", "run", "--config-file", "cypress.headless.config.js"]

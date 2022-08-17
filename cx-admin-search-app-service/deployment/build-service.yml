@@ -1,0 +1,22 @@
+---
+- hosts: all
+  vars:
+    extra_service_name: "cx-admin-search-app-service"
+    sonar_project_key: "gamesys.csp:cx-admin-search-app-service"
+    extra_clm_application_id: "cx-admin-search-app-service"
+    extra_deployment_path: "cx-admin-search-app-service/deployment"
+    nexus_iq_app_name: "cx-admin-search-app-service"
+    nexus_stage: "Build"
+    sonar_for_java_project: True
+    sonar_language: "java"
+  roles:
+    - clone-external-project
+    - setup-maven-settings
+    - setup-git-settings
+    - setup-artifact-maven-version
+    - docker-login
+    - maven-verify
+    - sonarqube-scan
+    - verify-sonarqube-qualitygate
+    - maven-deploy
+    - git-add-label

@@ -1,7 +1,10 @@
 import React from 'react';
+import { render } from '@testing-library/react';
+import { Provider } from 'react-redux';
 import { afterEach, describe, expect, it } from '@jest/globals';
-import { cleanup, render } from '@testing-library/react';
+import { cleanup } from '@testing-library/react';
 import App from './App';
+import { setupStore } from '../../store/store';
 
 describe('App', () => {
 
@@ -9,7 +12,9 @@ describe('App', () => {
 
     it('should render', () => {
 
-        const { asFragment, unmount } = render(<App />);
+        const store = setupStore();
+
+        const { asFragment, unmount } = render(<Provider store={store}><App /></Provider>);
 
         expect(asFragment()).toMatchSnapshot();
 

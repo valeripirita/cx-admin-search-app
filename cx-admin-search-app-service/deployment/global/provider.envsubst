@@ -1,0 +1,42 @@
+terraform {
+  backend "s3" {
+    acl            = "private"
+    bucket         = "${STATE_BUCKET}"
+    key            = "cx-admin-search-app-ui-key"
+    region         = "${AWS_REGION}"
+    dynamodb_table = "service-deploy-state-lock"
+  }
+}
+
+data "aws_caller_identity" "current" {}
+
+data "vault_aws_access_credentials" "vault_provisioner" {
+  provider = vault.automation_approle
+  backend  = var.vault_backend_aws
+  role     = var.vault_role_csp
+  role_arn = var.vault_role_csp_arn
+  type     = "sts"
+}
+
+provider "vault" {
+  alias = "automation_approle"
+
+  address         = var.vault_addr
+  skip_tls_verify = true
+  auth_login {
+    path = var.vault_provider_auth_login_path
+    parameters = {
+      role_id   = var.vault_role_id
+      secret_id = var.vault_secret_id
+    }
+  }
+  max_lease_ttl_seconds = 3600
+}
+
+provider "aws" {
+  region = var.AWS_REGION
+
+  token      = data.vault_aws_access_credentials.vault_provisioner.security_token
+  access_key = data.vault_aws_access_credentials.vault_provisioner.access_key
+  secret_key = data.vault_aws_access_credentials.vault_provisioner.secret_key
+}

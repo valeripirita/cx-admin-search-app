@@ -3,18 +3,23 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const { ModuleFederationPlugin } = webpack.container;
+const Dotenv = require('dotenv-webpack');
 const deps = require('./package.json').dependencies;
 
 module.exports = () => {
     return {
-        entry: './src/index.ts',
+        devtool: 'inline-source-map',
+        entry: './src/index.tsx',
         mode: process.env.NODE_ENV || 'development',
         devServer: {
+            static: './dist',
+            hot: true,
             port: 9001,
-            open: true,
             historyApiFallback: true,
             headers: {
-                'Access-Control-Allow-Origin': '*'
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+                'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization'
             }
         },
         resolve: {
@@ -41,12 +46,18 @@ module.exports = () => {
                     use: ['style-loader', 'css-loader', 'postcss-loader']
                 },
                 {
-                    test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
+                    test: /\.(eot|ttf|woff|woff2|png|jpg|gif)$/i,
                     type: 'asset'
+                },
+                {
+                    test: /\.svg$/i,
+                    issuer: /\.[jt]sx?$/,
+                    use: ['@svgr/webpack'],
                 }
             ]
         },
         plugins: [
+            new Dotenv(),
             new ModuleFederationPlugin({
                 name: 'cx_admin_search_app',
                 filename: 'remoteEntry.js',
@@ -54,7 +65,6 @@ module.exports = () => {
                     './SearchApp': './src/components/app/App.tsx'
                 },
                 shared: {
-                    ...deps,
                     react: { singleton: true, eager: true, requiredVersion: deps.react },
                     'react-dom': {
                         singleton: true,

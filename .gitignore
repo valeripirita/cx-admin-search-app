@@ -1,5 +1,11 @@
 .idea
+.DS_Store
 .vscode
 *.iml
 .scannerwork
 /cx-admin-search-app-ui/ui/node_modules/
+/cx-admin-search-app-service/service/log/
+/cx-admin-search-app-service/service/target/
+/cx-admin-search-app-ui/ui/dist/
+/e2e/node_modules/
+/cx-admin-search-app-ui/ui/coverage/
